@@ -1,0 +1,131 @@
+syntax = "proto3";
+
+package biometrics;
+
+// Basic HRV metrics
+message HRVPacket {
+  uint64 timestamp = 1;
+  float rmssd = 2;
+  float hf_power = 3;
+  float lf_power = 4;
+  string device_id = 5;
+  string patient_id = 6;
+}
+
+// Skin Conductance (EDA)
+message EDAPacket {
+  uint64 timestamp = 1;
+  float conductance = 2; // Microsiemens
+  string device_id = 3;
+  string patient_id = 4;
+}
+
+// Skin Temperature
+message TemperaturePacket {
+  uint64 timestamp = 1;
+  float temperature_celsius = 2;
+  string device_id = 3;
+  string patient_id = 4;
+}
+
+// Accelerometer (Motion)
+message AccelerometerPacket {
+  uint64 timestamp = 1;
+  float accel_x = 2;
+  float accel_y = 3;
+  float accel_z = 4;
+  string device_id = 5;
+  string patient_id = 6;
+}
+
+// Stress detection label
+enum StressLabelType {
+  BASELINE = 0;
+  STRESS = 1;
+  RECOVERY = 2;
+}
+
+message StressLabel {
+  uint64 timestamp = 1;
+  StressLabelType label = 2;
+  float confidence = 3; // 0.0-1.0, model confidence in label
+  string source = 4;    // Optional: e.g., "ML_model_v1", "manual"
+  string device_id = 5;
+  string patient_id = 6;
+  string status = 7;    // Optional: e.g., "ok", "lowSignalQuality"
+}
+
+// Device Heartbeat
+message HeartbeatPacket {
+  uint64 timestamp = 1;
+  string device_id = 2;
+  string patient_id = 3;
+  uint32 battery_percent = 4; // 0-100%
+  string firmware_version = 5;
+}
+
+// RAW ECG
+message ECGPacket {
+  uint64 timestamp = 1;
+  repeated float samples = 2;  // Raw voltage samples in millivolts
+  uint32 sample_rate = 3;      // Samples per second (Hz)
+  string device_id = 4;
+  string patient_id = 5;
+}
+
+// RAW EDA waveform packet
+message EDAWaveformPacket {
+  uint64 timestamp = 1;
+  repeated float samples = 2;  // Raw conductance readings in microsiemens
+  uint32 sample_rate = 3;      // Samples per second (Hz)
+  string device_id = 4;
+  string patient_id = 5;
+}
+
+// Respiratory Rate Packet
+message RespirationPacket {
+  uint64 timestamp = 1;
+  float breaths_per_minute = 2;
+  string device_id = 3;
+  string patient_id = 4;
+}
+
+// Blood Pressure Packet
+message BloodPressurePacket {
+  uint64 timestamp = 1;
+  uint32 systolic = 2;   // mmHg
+  uint32 diastolic = 3;  // mmHg
+  string device_id = 4;
+  string patient_id = 5;
+}
+
+// Sleep Stage Label
+message SleepStagePacket {
+  uint64 timestamp = 1;
+  string stage = 2;       // "awake", "light", "deep", "REM"
+  float confidence = 3;   // 0.0-1.0
+  string device_id = 4;
+  string patient_id = 5;
+}
+
+// ML Model Scores
+message ClassifierScore {
+  uint64 timestamp = 1;
+  uint32 output = 2;
+  string device_id = 3;
+  string patient_id = 4;
+}
+
+message RegressionScore {
+  uint64 timestamp = 1;
+  uint64 output = 2;
+  string device_id = 3;
+  string patient_id = 4;
+}
+
+message LLM {
+  uint64 timestamp = 1;
+  string output = 2;
+  string device_id = 3;
+  string patient_id = 4;
+}
