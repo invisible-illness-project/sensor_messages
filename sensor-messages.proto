@@ -1,6 +1,26 @@
 syntax = "proto3";
 
-package biometrics;
+package SensorDataPacket;
+
+message SensorDataContainer {
+  oneof data {
+    HRVPacket hrv = 1;
+    EDAPacket eda = 2;
+    TemperaturePacket temperature = 3;
+    AccelerometerPacket accelerometer = 4;
+    StressLabel stress_label = 5;
+    HeartbeatPacket heartbeat = 6;
+    ECGPacket ecg = 7;
+    EDAWaveformPacket eda_waveform = 8;
+    RespirationPacket respiration = 9;
+    BloodPressurePacket blood_pressure = 10;
+    SleepStagePacket sleep_stage = 11;
+    ClassifierScore classifier_score = 12;
+    RegressionScore regression_score = 13;
+    LLM llm = 14;
+  }
+}
+
 
 // Basic HRV metrics
 message HRVPacket {
