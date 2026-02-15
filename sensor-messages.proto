@@ -34,7 +34,7 @@ message HRVPacket {
 
 // Skin Conductance (EDA)
 message EDAPacket {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   float conductance = 2; // Microsiemens
   string device_id = 3;
   string patient_id = 4;
