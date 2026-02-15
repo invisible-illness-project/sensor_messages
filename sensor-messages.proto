@@ -42,7 +42,7 @@ message EDAPacket {
 
 // Skin Temperature
 message TemperaturePacket {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   float temperature_celsius = 2;
   string device_id = 3;
   string patient_id = 4;
