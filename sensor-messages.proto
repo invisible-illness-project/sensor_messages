@@ -24,7 +24,7 @@ message SensorDataContainer {
 
 // Basic HRV metrics
 message HRVPacket {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   float rmssd = 2;
   float hf_power = 3;
   float lf_power = 4;
@@ -50,7 +50,7 @@ message TemperaturePacket {
 
 // Accelerometer (Motion)
 message AccelerometerPacket {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   float accel_x = 2;
   float accel_y = 3;
   float accel_z = 4;
@@ -66,7 +66,7 @@ enum StressLabelType {
 }
 
 message StressLabel {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   StressLabelType label = 2;
   float confidence = 3; // 0.0-1.0, model confidence in label
   string source = 4;    // Optional: e.g., "ML_model_v1", "manual"
@@ -77,7 +77,7 @@ message StressLabel {
 
 // Device Heartbeat
 message HeartbeatPacket {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   string device_id = 2;
   string patient_id = 3;
   uint32 battery_percent = 4; // 0-100%
@@ -86,7 +86,7 @@ message HeartbeatPacket {
 
 // RAW ECG
 message ECGPacket {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   repeated float samples = 2;  // Raw voltage samples in millivolts
   uint32 sample_rate = 3;      // Samples per second (Hz)
   string device_id = 4;
@@ -104,7 +104,7 @@ message EDAWaveformPacket {
 
 // Respiratory Rate Packet
 message RespirationPacket {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   float breaths_per_minute = 2;
   string device_id = 3;
   string patient_id = 4;
@@ -112,7 +112,7 @@ message RespirationPacket {
 
 // Blood Pressure Packet
 message BloodPressurePacket {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   uint32 systolic = 2;   // mmHg
   uint32 diastolic = 3;  // mmHg
   string device_id = 4;
@@ -121,7 +121,7 @@ message BloodPressurePacket {
 
 // Sleep Stage Label
 message SleepStagePacket {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   string stage = 2;       // "awake", "light", "deep", "REM"
   float confidence = 3;   // 0.0-1.0
   string device_id = 4;
@@ -130,21 +130,21 @@ message SleepStagePacket {
 
 // ML Model Scores
 message ClassifierScore {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   uint32 output = 2;
   string device_id = 3;
   string patient_id = 4;
 }
 
 message RegressionScore {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   uint64 output = 2;
   string device_id = 3;
   string patient_id = 4;
 }
 
 message LLM {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   string output = 2;
   string device_id = 3;
   string patient_id = 4;
