@@ -16,13 +16,14 @@ message SensorDataContainer {
     BloodPressurePacket blood_pressure = 10;
     SleepStagePacket sleep_stage = 11;
     BloodVolumePulsePacket bvp = 12;
+    HearRatePacket heart_rate = 13;
     
     // Packets for ML outputs
     ClassifierScore classifier_score = 21;
     RegressionScore regression_score = 22;
     LLM llm = 23;
   }
-  reserved 12 to 20; // Reserved for future packets
+  reserved 14 to 20; // Reserved for future packets
 }
 
 
@@ -86,6 +87,13 @@ message HeartbeatPacket {
   string patient_id = 3;
   uint32 battery_percent = 4; // 0-100%
   string firmware_version = 5;
+}
+
+message HearRatePacket {
+  float timestamp = 1; 
+  float bpm = 2;
+  string device_id = 3;
+  string patient_id = 4;
 }
 
 // RAW ECG
