@@ -15,9 +15,14 @@ message SensorDataContainer {
     RespirationPacket respiration = 9;
     BloodPressurePacket blood_pressure = 10;
     SleepStagePacket sleep_stage = 11;
-    ClassifierScore classifier_score = 12;
-    RegressionScore regression_score = 13;
-    LLM llm = 14;
+    BloodVolumePulsePacket bvp = 12;
+    
+    // Packets for ML outputs
+    ClassifierScore classifier_score = 21;
+    RegressionScore regression_score = 22;
+    LLM llm = 23;
+
+    reserved 12 to 20; // Reserved for future packets
   }
 }
 
@@ -117,6 +122,14 @@ message BloodPressurePacket {
   uint32 diastolic = 3;  // mmHg
   string device_id = 4;
   string patient_id = 5;
+}
+
+// Blood Volume Pulse Packet
+message BloodVolumePulsePacket {
+  float timestamp = 1;
+  float bvp = 2;
+  string device_id = 3;
+  string patient_id = 4;
 }
 
 // Sleep Stage Label
