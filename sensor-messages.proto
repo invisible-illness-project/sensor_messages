@@ -101,7 +101,7 @@ message HearRatePacket {
 message ECGPacket {
   float timestamp = 1;
   repeated float samples = 2;  // Raw voltage samples in millivolts
-  uint32 sample_rate = 3;      // Samples per second (Hz)
+  float sample_rate = 3;      // Samples per second (Hz)
   string device_id = 4;
   string patient_id = 5;
 }
