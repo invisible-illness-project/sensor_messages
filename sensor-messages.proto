@@ -15,16 +15,22 @@ message SensorDataContainer {
     RespirationPacket respiration = 9;
     BloodPressurePacket blood_pressure = 10;
     SleepStagePacket sleep_stage = 11;
-    ClassifierScore classifier_score = 12;
-    RegressionScore regression_score = 13;
-    LLM llm = 14;
+    BloodVolumePulsePacket bvp = 12;
+    HearRatePacket heart_rate = 13;
+    EMGPacket emg = 14;
+    
+    // Packets for ML outputs
+    ClassifierScore classifier_score = 21;
+    RegressionScore regression_score = 22;
+    LLM llm = 23;
   }
+  reserved 15 to 20; // Reserved for future packets
 }
 
 
 // Basic HRV metrics
 message HRVPacket {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   float rmssd = 2;
   float hf_power = 3;
   float lf_power = 4;
@@ -34,7 +40,7 @@ message HRVPacket {
 
 // Skin Conductance (EDA)
 message EDAPacket {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   float conductance = 2; // Microsiemens
   string device_id = 3;
   string patient_id = 4;
@@ -42,7 +48,7 @@ message EDAPacket {
 
 // Skin Temperature
 message TemperaturePacket {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   float temperature_celsius = 2;
   string device_id = 3;
   string patient_id = 4;
@@ -50,7 +56,7 @@ message TemperaturePacket {
 
 // Accelerometer (Motion)
 message AccelerometerPacket {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   float accel_x = 2;
   float accel_y = 3;
   float accel_z = 4;
@@ -66,7 +72,7 @@ enum StressLabelType {
 }
 
 message StressLabel {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   StressLabelType label = 2;
   float confidence = 3; // 0.0-1.0, model confidence in label
   string source = 4;    // Optional: e.g., "ML_model_v1", "manual"
@@ -77,18 +83,25 @@ message StressLabel {
 
 // Device Heartbeat
 message HeartbeatPacket {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   string device_id = 2;
   string patient_id = 3;
   uint32 battery_percent = 4; // 0-100%
   string firmware_version = 5;
 }
 
+message HearRatePacket {
+  float timestamp = 1; 
+  float bpm = 2;
+  string device_id = 3;
+  string patient_id = 4;
+}
+
 // RAW ECG
 message ECGPacket {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   repeated float samples = 2;  // Raw voltage samples in millivolts
-  uint32 sample_rate = 3;      // Samples per second (Hz)
+  float sample_rate = 3;      // Samples per second (Hz)
   string device_id = 4;
   string patient_id = 5;
 }
@@ -104,7 +117,7 @@ message EDAWaveformPacket {
 
 // Respiratory Rate Packet
 message RespirationPacket {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   float breaths_per_minute = 2;
   string device_id = 3;
   string patient_id = 4;
@@ -112,16 +125,33 @@ message RespirationPacket {
 
 // Blood Pressure Packet
 message BloodPressurePacket {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   uint32 systolic = 2;   // mmHg
   uint32 diastolic = 3;  // mmHg
   string device_id = 4;
   string patient_id = 5;
 }
 
+// Blood Volume Pulse Packet
+message BloodVolumePulsePacket {
+  float timestamp = 1;
+  float bvp = 2;
+  string device_id = 3;
+  string patient_id = 4;
+}
+
+// EMG Packet
+message EMGPacket {
+  float timestamp = 1;
+  repeated float samples = 2;
+  float sample_rate = 3;
+  string device_id = 4;
+  string patient_id = 5;  
+}
+
 // Sleep Stage Label
 message SleepStagePacket {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   string stage = 2;       // "awake", "light", "deep", "REM"
   float confidence = 3;   // 0.0-1.0
   string device_id = 4;
@@ -130,21 +160,21 @@ message SleepStagePacket {
 
 // ML Model Scores
 message ClassifierScore {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   uint32 output = 2;
   string device_id = 3;
   string patient_id = 4;
 }
 
 message RegressionScore {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   uint64 output = 2;
   string device_id = 3;
   string patient_id = 4;
 }
 
 message LLM {
-  uint64 timestamp = 1;
+  float timestamp = 1;
   string output = 2;
   string device_id = 3;
   string patient_id = 4;
