@@ -1,0 +1,12 @@
+name: sensor_messages
+description: Dart protobuf bindings for Roeh Health sensor data transport & Lamina compatibility
+version: 0.1.0
+environment:
+  sdk: '>=3.0.0 <4.0.0'
+
+dependencies:
+  protobuf: ^6.0.0
+  fixnum: ^1.1.0
+
+dev_dependencies:
+  test: ^1.24.0

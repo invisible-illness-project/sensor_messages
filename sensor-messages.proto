@@ -1,181 +1,456 @@
 syntax = "proto3";
 
-package SensorDataPacket;
+package roeh.sensor.v1;
 
-message SensorDataContainer {
-  oneof data {
-    HRVPacket hrv = 1;
-    EDAPacket eda = 2;
-    TemperaturePacket temperature = 3;
-    AccelerometerPacket accelerometer = 4;
-    StressLabel stress_label = 5;
-    HeartbeatPacket heartbeat = 6;
-    ECGPacket ecg = 7;
-    EDAWaveformPacket eda_waveform = 8;
-    RespirationPacket respiration = 9;
-    BloodPressurePacket blood_pressure = 10;
-    SleepStagePacket sleep_stage = 11;
-    BloodVolumePulsePacket bvp = 12;
-    HearRatePacket heart_rate = 13;
-    EMGPacket emg = 14;
-    
-    // Packets for ML outputs
-    ClassifierScore classifier_score = 21;
-    RegressionScore regression_score = 22;
-    LLM llm = 23;
-  }
-  reserved 15 to 20; // Reserved for future packets
+import "google/protobuf/timestamp.proto";
+
+option go_package = "github.com/roeh-health/sensor_messages/v1;sensorv1";
+option java_package = "com.roehhealth.sensor.v1";
+option java_multiple_files = true;
+
+// ============================================================================
+// 1. Common Metadata & Enumerations
+// ============================================================================
+
+/// Primary sensor modalities across Roeh Health hardware & processing stack.
+enum SensorModality {
+  SENSOR_MODALITY_UNSPECIFIED = 0;
+  SENSOR_MODALITY_ECG = 1;          // Electrocardiography
+  SENSOR_MODALITY_PPG = 2;          // Photoplethysmography (contact)
+  SENSOR_MODALITY_EDA = 3;          // Electrodermal Activity (GSR)
+  SENSOR_MODALITY_RSP = 4;          // Respiration
+  SENSOR_MODALITY_ACCELEROMETER = 5;// Motion / Accelerometer
+  SENSOR_MODALITY_GYROSCOPE = 6;    // Motion / Gyroscope
+  SENSOR_MODALITY_TEMPERATURE = 7;  // Skin / Ambient Temperature
+  SENSOR_MODALITY_BLOOD_PRESSURE = 8;// Blood Pressure
+  SENSOR_MODALITY_BVP = 9;          // Blood Volume Pulse
+  SENSOR_MODALITY_EMG = 10;         // Electromyography
+  SENSOR_MODALITY_RPPG = 11;        // Remote Photoplethysmography (camera/video)
 }
 
-
-// Basic HRV metrics
-message HRVPacket {
-  float timestamp = 1;
-  float rmssd = 2;
-  float hf_power = 3;
-  float lf_power = 4;
-  string device_id = 5;
-  string patient_id = 6;
+/// Physical units for raw signals and derived features.
+enum PhysicalUnit {
+  PHYSICAL_UNIT_UNSPECIFIED = 0;
+  PHYSICAL_UNIT_MILLIVOLTS = 1;     // mV (ECG, EMG)
+  PHYSICAL_UNIT_MICROSIEMENS = 2;   // uS (EDA conductance)
+  PHYSICAL_UNIT_CELSIUS = 3;        // Degrees C (Temperature)
+  PHYSICAL_UNIT_BPM = 4;            // Beats / Breaths per Minute (HR, RR)
+  PHYSICAL_UNIT_MILLISECONDS = 5;   // ms (NN/RR intervals, SDNN, RMSSD)
+  PHYSICAL_UNIT_SECONDS = 6;        // s (Timestamps, durations, pulse delay)
+  PHYSICAL_UNIT_G_FORCE = 7;        // g (Accelerometer)
+  PHYSICAL_UNIT_METERS_PER_SEC_SQ = 8; // m/s^2 (Accelerometer)
+  PHYSICAL_UNIT_MMHG = 9;           // mmHg (Blood pressure)
+  PHYSICAL_UNIT_PERCENT = 10;       // % (Battery, pNN50, coverage)
+  PHYSICAL_UNIT_RADIANS = 11;       // rad (Phase angle)
 }
 
-// Skin Conductance (EDA)
-message EDAPacket {
-  float timestamp = 1;
-  float conductance = 2; // Microsiemens
-  string device_id = 3;
-  string patient_id = 4;
-}
-
-// Skin Temperature
-message TemperaturePacket {
-  float timestamp = 1;
-  float temperature_celsius = 2;
-  string device_id = 3;
-  string patient_id = 4;
-}
-
-// Accelerometer (Motion)
-message AccelerometerPacket {
-  float timestamp = 1;
-  float accel_x = 2;
-  float accel_y = 3;
-  float accel_z = 4;
-  string device_id = 5;
-  string patient_id = 6;
-}
-
-// Stress detection label
-enum StressLabelType {
-  BASELINE = 0;
-  STRESS = 1;
-  RECOVERY = 2;
-}
-
-message StressLabel {
-  float timestamp = 1;
-  StressLabelType label = 2;
-  float confidence = 3; // 0.0-1.0, model confidence in label
-  string source = 4;    // Optional: e.g., "ML_model_v1", "manual"
-  string device_id = 5;
-  string patient_id = 6;
-  string status = 7;    // Optional: e.g., "ok", "lowSignalQuality"
-}
-
-// Device Heartbeat
-message HeartbeatPacket {
-  float timestamp = 1;
-  string device_id = 2;
-  string patient_id = 3;
-  uint32 battery_percent = 4; // 0-100%
+/// Structured identification for device, patient, and recording session context.
+message DeviceMetadata {
+  string device_id = 1;
+  string patient_id = 2;
+  string session_id = 3;
+  string hardware_model = 4;
   string firmware_version = 5;
+  uint32 battery_percent = 6;
+  string sensor_location = 7;       // e.g. "wrist_left", "chest_lead_ii", "index_finger"
 }
 
-message HearRatePacket {
-  float timestamp = 1; 
-  float bpm = 2;
-  string device_id = 3;
-  string patient_id = 4;
+/// High-level filter type specification matching lamina::signal::FilterSpec.
+enum FilterKind {
+  FILTER_KIND_UNSPECIFIED = 0;
+  FILTER_KIND_LOWPASS = 1;
+  FILTER_KIND_HIGHPASS = 2;
+  FILTER_KIND_BANDPASS = 3;
+  FILTER_KIND_NOTCH = 4;
 }
 
-// RAW ECG
-message ECGPacket {
-  float timestamp = 1;
-  repeated float samples = 2;  // Raw voltage samples in millivolts
-  float sample_rate = 3;      // Samples per second (Hz)
-  string device_id = 4;
-  string patient_id = 5;
+/// Digital filter specification and provenance metadata.
+message FilterSpec {
+  FilterKind kind = 1;
+  double sampling_rate_hz = 2;
+  repeated double cutoffs_hz = 3;
+  uint32 order = 4;
 }
 
-// RAW EDA waveform packet
-message EDAWaveformPacket {
-  uint64 timestamp = 1;
-  repeated float samples = 2;  // Raw conductance readings in microsiemens
-  uint32 sample_rate = 3;      // Samples per second (Hz)
-  string device_id = 4;
-  string patient_id = 5;
+/// Helper wrapper for 1D double array in multi-channel matrices.
+message DoubleArray {
+  repeated double values = 1;
 }
 
-// Respiratory Rate Packet
-message RespirationPacket {
-  float timestamp = 1;
-  float breaths_per_minute = 2;
-  string device_id = 3;
-  string patient_id = 4;
+// ============================================================================
+// 2. Continuous Signals & Raw Sensor Streams
+// ============================================================================
+
+/// Continuous 1D physiological signal sample batch matching lamina::features::TimedSignal.
+message ContinuousSignalBatch {
+  google.protobuf.Timestamp start_timestamp = 1;
+  double start_offset_sec = 2;
+  double sampling_rate_hz = 3;
+  SensorModality modality = 4;
+  PhysicalUnit unit = 5;
+  string channel_name = 6;
+  repeated double samples = 7;
+  repeated bool missing_mask = 8;   // True if sample at index is invalid/NaN
+  FilterSpec filter_applied = 9;
+  DeviceMetadata metadata = 10;
 }
 
-// Blood Pressure Packet
-message BloodPressurePacket {
-  float timestamp = 1;
-  uint32 systolic = 2;   // mmHg
-  uint32 diastolic = 3;  // mmHg
-  string device_id = 4;
-  string patient_id = 5;
+/// Synchronized multi-channel continuous signal batch (e.g. 3-axis Accel, multi-wavelength PPG).
+message MultiChannelSignalBatch {
+  google.protobuf.Timestamp start_timestamp = 1;
+  double start_offset_sec = 2;
+  double sampling_rate_hz = 3;
+  SensorModality modality = 4;
+  repeated string channel_names = 5;
+  repeated PhysicalUnit channel_units = 6;
+  repeated DoubleArray channel_samples = 7;
+  DeviceMetadata metadata = 8;
 }
 
-// Blood Volume Pulse Packet
-message BloodVolumePulsePacket {
-  float timestamp = 1;
-  float bvp = 2;
-  string device_id = 3;
-  string patient_id = 4;
+/// Single point-in-time sensor measurement (e.g. Temperature, Battery).
+message SinglePointMeasurement {
+  google.protobuf.Timestamp timestamp = 1;
+  SensorModality modality = 2;
+  double value = 3;
+  PhysicalUnit unit = 4;
+  string metric_name = 5;
+  DeviceMetadata metadata = 6;
 }
 
-// EMG Packet
-message EMGPacket {
-  float timestamp = 1;
-  repeated float samples = 2;
-  float sample_rate = 3;
-  string device_id = 4;
-  string patient_id = 5;  
+/// Discrete blood pressure reading.
+message BloodPressureMeasurement {
+  google.protobuf.Timestamp timestamp = 1;
+  uint32 systolic_mmhg = 2;
+  uint32 diastolic_mmhg = 3;
+  DeviceMetadata metadata = 4;
 }
 
-// Sleep Stage Label
-message SleepStagePacket {
-  float timestamp = 1;
-  string stage = 2;       // "awake", "light", "deep", "REM"
-  float confidence = 3;   // 0.0-1.0
-  string device_id = 4;
-  string patient_id = 5;
+// ============================================================================
+// 3. Extracted Physiological Events & Peaks (Lamina Output)
+// ============================================================================
+
+/// Single cardiac peak detection event (ECG R-peak or PPG Systolic peak).
+message CardiacPeakEvent {
+  uint64 sample_index = 1;
+  double timestamp_sec = 2;
+  double amplitude = 3;
+  SensorModality modality = 4;
 }
 
-// ML Model Scores
-message ClassifierScore {
-  float timestamp = 1;
-  uint32 output = 2;
-  string device_id = 3;
-  string patient_id = 4;
+message CardiacPeakBatch {
+  repeated CardiacPeakEvent events = 1;
+  double sampling_rate_hz = 2;
+  double offset_sec = 3;
+  DeviceMetadata metadata = 4;
 }
 
-message RegressionScore {
-  float timestamp = 1;
-  uint64 output = 2;
-  string device_id = 3;
-  string patient_id = 4;
+/// Electrodermal SCR event matching lamina::eda::ScrEvent.
+message ScrEvent {
+  uint64 onset_index = 1;
+  double onset_time_sec = 2;
+  uint64 peak_index = 3;
+  double peak_time_sec = 4;
+  double amplitude_us = 5;          // Microsiemens (uS)
+  double rise_time_sec = 6;
 }
 
-message LLM {
-  float timestamp = 1;
-  string output = 2;
-  string device_id = 3;
-  string patient_id = 4;
+message ScrEventBatch {
+  repeated ScrEvent events = 1;
+  double sampling_rate_hz = 2;
+  double offset_sec = 3;
+  DeviceMetadata metadata = 4;
+}
+
+/// Respiration breath cycle matching lamina::rsp::RespirationCycle.
+message RespirationCycle {
+  uint64 inspiration_index = 1;
+  double inspiration_time_sec = 2;
+  uint64 expiration_index = 3;
+  double expiration_time_sec = 4;
+  double duration_sec = 5;
+  double amplitude = 6;
+  bool is_valid = 7;
+}
+
+message RespirationCycleBatch {
+  repeated RespirationCycle cycles = 1;
+  double sampling_rate_hz = 2;
+  double offset_sec = 3;
+  DeviceMetadata metadata = 4;
+}
+
+/// ECG-to-PPG pulse delay timing matching lamina::multimodal::ecg_ppg::PulseTimingResult.
+message PulseTimingResult {
+  double r_peak_time_sec = 1;
+  double ppg_peak_time_sec = 2;
+  double pulse_delay_sec = 3;
+}
+
+message PulseTimingBatch {
+  repeated PulseTimingResult timings = 1;
+  DeviceMetadata metadata = 2;
+}
+
+/// Respiratory Sinus Arrhythmia result matching lamina::multimodal::rsa::RsaResult.
+message RsaResult {
+  double beat_time_sec = 1;
+  double amplitude_bpm = 2;
+  double amplitude_rr_sec = 3;
+}
+
+message RsaBatch {
+  repeated RsaResult results = 1;
+  DeviceMetadata metadata = 2;
+}
+
+// ============================================================================
+// 4. Windowed Feature Extraction (Lamina lamina::features)
+// ============================================================================
+
+/// Physical window specification matching lamina::features::window::FeatureWindow.
+message FeatureWindow {
+  double start_time_sec = 1;
+  double end_time_sec = 2;
+  double duration_sec = 3;
+}
+
+/// Cardiac features matching lamina::features::cardiac::CardiacFeatures.
+message CardiacFeatures {
+  optional double mean_hr_bpm = 1;
+  optional double median_hr_bpm = 2;
+  optional double sdnn_ms = 3;
+  optional double rmssd_ms = 4;
+  optional double pnn50 = 5;
+  optional double rr_mean_ms = 6;
+  optional double rr_std_ms = 7;
+  uint64 beat_count = 8;
+}
+
+/// EDA features matching lamina::features::eda::EdaFeatures.
+message EdaFeatures {
+  optional double mean_tonic_us = 1;
+  optional double median_tonic_us = 2;
+  optional double tonic_std_us = 3;
+  optional double mean_phasic_us = 4;
+  optional double phasic_std_us = 5;
+  uint64 scr_count = 6;
+  optional double scr_rate_per_min = 7;
+  optional double mean_scr_amplitude_us = 8;
+  optional double median_scr_amplitude_us = 9;
+  optional double mean_scr_rise_time_sec = 10;
+}
+
+/// Respiration features matching lamina::features::respiration::RespirationFeatures.
+message RespirationFeatures {
+  optional double mean_rate_bpm = 1;
+  optional double median_rate_bpm = 2;
+  optional double rate_std_bpm = 3;
+  optional double mean_cycle_duration_sec = 4;
+  uint64 cycle_count = 5;
+  optional double mean_amplitude = 6;
+  optional double amplitude_std = 7;
+}
+
+/// Multimodal coupling features matching lamina::features::coupling::CouplingFeatures.
+message CouplingFeatures {
+  optional double rsa_amplitude_bpm = 1;
+  optional double rsa_amplitude_rr_sec = 2;
+  optional double cardiac_respiratory_concentration = 3;
+  optional double cardiac_respiratory_mean_phase = 4;
+  optional double mean_pulse_delay_sec = 5;
+  optional double pulse_delay_std_sec = 6;
+  uint64 scr_cardiac_association_count = 7;
+}
+
+/// Feature quality issue enumeration matching lamina::features::quality::FeatureQualityIssue.
+enum FeatureQualityIssue {
+  FEATURE_QUALITY_ISSUE_UNSPECIFIED = 0;
+  FEATURE_QUALITY_ISSUE_INSUFFICIENT_BEATS = 1;
+  FEATURE_QUALITY_ISSUE_INSUFFICIENT_RESPIRATION_CYCLES = 2;
+  FEATURE_QUALITY_ISSUE_INSUFFICIENT_SCR_EVENTS = 3;
+  FEATURE_QUALITY_ISSUE_LOW_COVERAGE = 4;
+  FEATURE_QUALITY_ISSUE_MISSING_MODALITY = 5;
+  FEATURE_QUALITY_ISSUE_INVALID_INPUT = 6;
+}
+
+/// Modality coverage breakdown matching lamina::features::quality::FeatureCoverage.
+message FeatureCoverage {
+  double overall = 1;
+  optional double ecg = 2;
+  optional double ppg = 3;
+  optional double eda = 4;
+  optional double rsp = 5;
+}
+
+/// Feature quality summary matching lamina::features::quality::FeatureQuality.
+message FeatureQuality {
+  double coverage = 1;
+  FeatureCoverage modality_coverage = 2;
+  bool cardiac_valid = 3;
+  bool eda_valid = 4;
+  bool respiration_valid = 5;
+  bool coupling_valid = 6;
+  uint64 usable_feature_count = 7;
+  uint64 total_feature_count = 8;
+  repeated FeatureQualityIssue issues = 9;
+}
+
+/// Unified windowed feature vector matching lamina::features::MultimodalFeatureVector.
+message MultimodalFeatureVector {
+  FeatureWindow window = 1;
+  CardiacFeatures cardiac = 2;
+  EdaFeatures eda = 3;
+  RespirationFeatures respiration = 4;
+  CouplingFeatures coupling = 5;
+  FeatureQuality quality = 6;
+  DeviceMetadata metadata = 7;
+}
+
+// ============================================================================
+// 5. Autonomic State Estimation (Lamina lamina::autonomic)
+// ============================================================================
+
+/// Cardiac state evidence matching lamina::autonomic::state::CardiacState.
+message CardiacState {
+  optional double variability_index = 1;
+  optional double heart_rate_index = 2;
+  optional double recovery_evidence = 3;
+  uint64 beat_count = 4;
+}
+
+/// Electrodermal state evidence matching lamina::autonomic::state::ElectrodermalState.
+message ElectrodermalState {
+  optional double tonic_level_index = 1;
+  optional double phasic_activation_index = 2;
+  optional double scr_rate_index = 3;
+  uint64 scr_count = 4;
+}
+
+/// Respiratory state evidence matching lamina::autonomic::state::RespiratoryState.
+message RespiratoryState {
+  optional double rate_index = 1;
+  optional double amplitude_index = 2;
+  optional double regularity_index = 3;
+  uint64 cycle_count = 4;
+}
+
+/// Coupling state evidence matching lamina::autonomic::state::CouplingState.
+message CouplingState {
+  optional double resphr_coupling_index = 1;
+  optional double phase_coupling_index = 2;
+  optional double pulse_delay_index = 3;
+  uint64 association_count = 4;
+}
+
+/// Multi-tiered evidence confidence matching lamina::autonomic::confidence::StateConfidence.
+message StateConfidence {
+  double overall = 1;
+  optional double cardiac = 2;
+  optional double electrodermal = 3;
+  optional double respiratory = 4;
+  optional double coupling = 5;
+}
+
+/// Interpretable autonomic state estimate matching lamina::autonomic::state::AutonomicState.
+message AutonomicState {
+  double timestamp_sec = 1;
+  double duration_sec = 2;
+  CardiacState cardiac = 3;
+  ElectrodermalState electrodermal = 4;
+  RespiratoryState respiratory = 5;
+  CouplingState coupling = 6;
+  optional double activation_score = 7;
+  optional double regulation_score = 8;
+  StateConfidence confidence = 9;
+  DeviceMetadata metadata = 10;
+}
+
+// ============================================================================
+// 6. Remote Photoplethysmography (rPPG) Substrate (Lamina lamina::rppg)
+// ============================================================================
+
+/// Bounding box ROI matching lamina::rppg::roi::Roi.
+message Roi {
+  uint32 x = 1;
+  uint32 y = 2;
+  uint32 width = 3;
+  uint32 height = 4;
+}
+
+/// Video metadata matching lamina::rppg::video::VideoMetadata.
+message VideoMetadata {
+  uint32 width = 1;
+  uint32 height = 2;
+  double fps = 3;
+  uint64 total_frames = 4;
+  double duration_sec = 5;
+}
+
+/// Segment quality metrics matching lamina::rppg::quality::RppgSegmentQuality.
+message RppgSegmentQuality {
+  double start_sec = 1;
+  double end_sec = 2;
+  double overall = 3;
+  double roi_quality = 4;
+  double motion_quality = 5;
+  double illumination_quality = 6;
+  double signal_quality = 7;
+  double valid_fraction = 8;
+}
+
+/// Recording-wide rPPG quality summary matching lamina::rppg::quality::RppgQualitySummary.
+message RppgQualitySummary {
+  double overall = 1;
+  double valid_fraction = 2;
+  repeated RppgSegmentQuality segments = 3;
+}
+
+/// Contiguous non-missing rPPG segment matching lamina::rppg::signal::RppgSegment.
+message RppgSegment {
+  double start_sec = 1;
+  double end_sec = 2;
+  double sampling_rate_hz = 3;
+  repeated double samples = 4;
+}
+
+/// Complete rPPG pulse signal output matching lamina::rppg::signal::RppgSignal.
+message RppgSignal {
+  double start_sec = 1;
+  double sampling_rate_hz = 2;
+  repeated double pulse_samples = 3;
+  repeated RppgSegment valid_segments = 4;
+  RppgQualitySummary quality = 5;
+  DeviceMetadata metadata = 6;
+}
+
+// ============================================================================
+// 7. Top-Level Transport Envelope
+// ============================================================================
+
+/// Flexible, strongly-typed envelope container for sensor streams & derived metrics.
+message SensorDataContainer {
+  DeviceMetadata metadata = 1;
+  google.protobuf.Timestamp packet_timestamp = 2;
+
+  oneof payload {
+    // Raw and continuous signals
+    ContinuousSignalBatch raw_signal = 10;
+    MultiChannelSignalBatch multi_channel_signal = 11;
+    SinglePointMeasurement single_measurement = 12;
+    BloodPressureMeasurement blood_pressure = 13;
+
+    // Lamina extracted events
+    CardiacPeakBatch cardiac_peaks = 14;
+    ScrEventBatch scr_events = 15;
+    RespirationCycleBatch respiration_cycles = 16;
+    PulseTimingBatch pulse_timings = 17;
+    RsaBatch rsa_results = 18;
+
+    // Lamina feature vector & autonomic state
+    MultimodalFeatureVector feature_vector = 19;
+    AutonomicState autonomic_state = 20;
+
+    // rPPG optical substrate
+    RppgSignal rppg_signal = 21;
+  }
 }

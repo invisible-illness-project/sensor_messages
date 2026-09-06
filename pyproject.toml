@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sensor_messages"
+version = "0.1.0"
+description = "Python protobuf bindings for Roeh Health sensor data transport & Lamina compatibility"
+dependencies = [
+    "protobuf>=3.20.0",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+]
