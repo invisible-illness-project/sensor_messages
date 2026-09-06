@@ -3957,6 +3957,7 @@ class RppgSignal extends $pb.GeneratedMessage {
     $core.Iterable<RppgSegment>? validSegments,
     RppgQualitySummary? quality,
     DeviceMetadata? metadata,
+    SignalPolarity? polarity,
   }) {
     final result = create();
     if (startSec != null) result.startSec = startSec;
@@ -3965,6 +3966,7 @@ class RppgSignal extends $pb.GeneratedMessage {
     if (validSegments != null) result.validSegments.addAll(validSegments);
     if (quality != null) result.quality = quality;
     if (metadata != null) result.metadata = metadata;
+    if (polarity != null) result.polarity = polarity;
     return result;
   }
 
@@ -3992,6 +3994,8 @@ class RppgSignal extends $pb.GeneratedMessage {
         subBuilder: RppgQualitySummary.create)
     ..aOM<DeviceMetadata>(6, _omitFieldNames ? '' : 'metadata',
         subBuilder: DeviceMetadata.create)
+    ..aE<SignalPolarity>(7, _omitFieldNames ? '' : 'polarity',
+        enumValues: SignalPolarity.values)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -4057,6 +4061,118 @@ class RppgSignal extends $pb.GeneratedMessage {
   void clearMetadata() => $_clearField(6);
   @$pb.TagNumber(6)
   DeviceMetadata ensureMetadata() => $_ensure(5);
+
+  @$pb.TagNumber(7)
+  SignalPolarity get polarity => $_getN(6);
+  @$pb.TagNumber(7)
+  set polarity(SignalPolarity value) => $_setField(7, value);
+  @$pb.TagNumber(7)
+  $core.bool hasPolarity() => $_has(6);
+  @$pb.TagNumber(7)
+  void clearPolarity() => $_clearField(7);
+}
+
+/// / Normalized optical blood volume pulse (BVP) surrogate waveform matching lamina::rppg::BvpWaveform.
+class BvpWaveform extends $pb.GeneratedMessage {
+  factory BvpWaveform({
+    $core.double? startSec,
+    $core.double? samplingRateHz,
+    $core.Iterable<$core.double>? pulseSamples,
+    SignalPolarity? polarity,
+    DeviceMetadata? metadata,
+  }) {
+    final result = create();
+    if (startSec != null) result.startSec = startSec;
+    if (samplingRateHz != null) result.samplingRateHz = samplingRateHz;
+    if (pulseSamples != null) result.pulseSamples.addAll(pulseSamples);
+    if (polarity != null) result.polarity = polarity;
+    if (metadata != null) result.metadata = metadata;
+    return result;
+  }
+
+  BvpWaveform._();
+
+  factory BvpWaveform.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory BvpWaveform.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'BvpWaveform',
+      package: const $pb.PackageName(
+          _omitMessageNames ? '' : 'invisible_illness.sensor.v1'),
+      createEmptyInstance: create)
+    ..aD(1, _omitFieldNames ? '' : 'startSec')
+    ..aD(2, _omitFieldNames ? '' : 'samplingRateHz')
+    ..p<$core.double>(
+        3, _omitFieldNames ? '' : 'pulseSamples', $pb.PbFieldType.KD)
+    ..aE<SignalPolarity>(4, _omitFieldNames ? '' : 'polarity',
+        enumValues: SignalPolarity.values)
+    ..aOM<DeviceMetadata>(5, _omitFieldNames ? '' : 'metadata',
+        subBuilder: DeviceMetadata.create)
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  BvpWaveform clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  BvpWaveform copyWith(void Function(BvpWaveform) updates) =>
+      super.copyWith((message) => updates(message as BvpWaveform))
+          as BvpWaveform;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static BvpWaveform create() => BvpWaveform._();
+  @$core.override
+  BvpWaveform createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static BvpWaveform getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<BvpWaveform>(create);
+  static BvpWaveform? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.double get startSec => $_getN(0);
+  @$pb.TagNumber(1)
+  set startSec($core.double value) => $_setDouble(0, value);
+  @$pb.TagNumber(1)
+  $core.bool hasStartSec() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearStartSec() => $_clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.double get samplingRateHz => $_getN(1);
+  @$pb.TagNumber(2)
+  set samplingRateHz($core.double value) => $_setDouble(1, value);
+  @$pb.TagNumber(2)
+  $core.bool hasSamplingRateHz() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearSamplingRateHz() => $_clearField(2);
+
+  @$pb.TagNumber(3)
+  $pb.PbList<$core.double> get pulseSamples => $_getList(2);
+
+  @$pb.TagNumber(4)
+  SignalPolarity get polarity => $_getN(3);
+  @$pb.TagNumber(4)
+  set polarity(SignalPolarity value) => $_setField(4, value);
+  @$pb.TagNumber(4)
+  $core.bool hasPolarity() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearPolarity() => $_clearField(4);
+
+  @$pb.TagNumber(5)
+  DeviceMetadata get metadata => $_getN(4);
+  @$pb.TagNumber(5)
+  set metadata(DeviceMetadata value) => $_setField(5, value);
+  @$pb.TagNumber(5)
+  $core.bool hasMetadata() => $_has(4);
+  @$pb.TagNumber(5)
+  void clearMetadata() => $_clearField(5);
+  @$pb.TagNumber(5)
+  DeviceMetadata ensureMetadata() => $_ensure(4);
 }
 
 enum SensorDataContainer_Payload {
@@ -4072,6 +4188,7 @@ enum SensorDataContainer_Payload {
   featureVector,
   autonomicState,
   rppgSignal,
+  bvpWaveform,
   notSet
 }
 
@@ -4092,6 +4209,7 @@ class SensorDataContainer extends $pb.GeneratedMessage {
     MultimodalFeatureVector? featureVector,
     AutonomicState? autonomicState,
     RppgSignal? rppgSignal,
+    BvpWaveform? bvpWaveform,
   }) {
     final result = create();
     if (metadata != null) result.metadata = metadata;
@@ -4109,6 +4227,7 @@ class SensorDataContainer extends $pb.GeneratedMessage {
     if (featureVector != null) result.featureVector = featureVector;
     if (autonomicState != null) result.autonomicState = autonomicState;
     if (rppgSignal != null) result.rppgSignal = rppgSignal;
+    if (bvpWaveform != null) result.bvpWaveform = bvpWaveform;
     return result;
   }
 
@@ -4135,6 +4254,7 @@ class SensorDataContainer extends $pb.GeneratedMessage {
     19: SensorDataContainer_Payload.featureVector,
     20: SensorDataContainer_Payload.autonomicState,
     21: SensorDataContainer_Payload.rppgSignal,
+    22: SensorDataContainer_Payload.bvpWaveform,
     0: SensorDataContainer_Payload.notSet
   };
   static final $pb.BuilderInfo _i = $pb.BuilderInfo(
@@ -4142,7 +4262,7 @@ class SensorDataContainer extends $pb.GeneratedMessage {
       package: const $pb.PackageName(
           _omitMessageNames ? '' : 'invisible_illness.sensor.v1'),
       createEmptyInstance: create)
-    ..oo(0, [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21])
+    ..oo(0, [10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22])
     ..aOM<DeviceMetadata>(1, _omitFieldNames ? '' : 'metadata',
         subBuilder: DeviceMetadata.create)
     ..aOM<$0.Timestamp>(2, _omitFieldNames ? '' : 'packetTimestamp',
@@ -4173,6 +4293,8 @@ class SensorDataContainer extends $pb.GeneratedMessage {
         subBuilder: AutonomicState.create)
     ..aOM<RppgSignal>(21, _omitFieldNames ? '' : 'rppgSignal',
         subBuilder: RppgSignal.create)
+    ..aOM<BvpWaveform>(22, _omitFieldNames ? '' : 'bvpWaveform',
+        subBuilder: BvpWaveform.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -4206,6 +4328,7 @@ class SensorDataContainer extends $pb.GeneratedMessage {
   @$pb.TagNumber(19)
   @$pb.TagNumber(20)
   @$pb.TagNumber(21)
+  @$pb.TagNumber(22)
   SensorDataContainer_Payload whichPayload() =>
       _SensorDataContainer_PayloadByTag[$_whichOneof(0)]!;
   @$pb.TagNumber(10)
@@ -4220,6 +4343,7 @@ class SensorDataContainer extends $pb.GeneratedMessage {
   @$pb.TagNumber(19)
   @$pb.TagNumber(20)
   @$pb.TagNumber(21)
+  @$pb.TagNumber(22)
   void clearPayload() => $_clearField($_whichOneof(0));
 
   @$pb.TagNumber(1)
@@ -4380,6 +4504,17 @@ class SensorDataContainer extends $pb.GeneratedMessage {
   void clearRppgSignal() => $_clearField(21);
   @$pb.TagNumber(21)
   RppgSignal ensureRppgSignal() => $_ensure(13);
+
+  @$pb.TagNumber(22)
+  BvpWaveform get bvpWaveform => $_getN(14);
+  @$pb.TagNumber(22)
+  set bvpWaveform(BvpWaveform value) => $_setField(22, value);
+  @$pb.TagNumber(22)
+  $core.bool hasBvpWaveform() => $_has(14);
+  @$pb.TagNumber(22)
+  void clearBvpWaveform() => $_clearField(22);
+  @$pb.TagNumber(22)
+  BvpWaveform ensureBvpWaveform() => $_ensure(14);
 }
 
 const $core.bool _omitFieldNames =

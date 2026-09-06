@@ -64,6 +64,33 @@ enum FilterKind {
   FILTER_KIND_NOTCH = 4;
 }
 
+/// Signal polarity convention for optical surrogates and blood volume pulse (BVP) waveforms matching lamina::rppg::SignalPolarity.
+enum SignalPolarity {
+  SIGNAL_POLARITY_UNSPECIFIED = 0;
+  SIGNAL_POLARITY_NORMAL = 1;
+  SIGNAL_POLARITY_INVERTED = 2;
+  SIGNAL_POLARITY_AUTO_DETECT = 3;
+}
+
+/// Interval quality category matching lamina::hrv::IntervalQuality.
+enum IntervalQualityKind {
+  INTERVAL_QUALITY_UNSPECIFIED = 0;
+  INTERVAL_QUALITY_NORMAL_NN = 1;
+  INTERVAL_QUALITY_ECTOPIC_RR = 2;
+  INTERVAL_QUALITY_ARTIFACT_RR = 3;
+  INTERVAL_QUALITY_MISSING = 4;
+}
+
+/// Interval correction policy kind matching lamina::hrv::CorrectionPolicy.
+enum CorrectionPolicyKind {
+  CORRECTION_POLICY_UNSPECIFIED = 0;
+  CORRECTION_POLICY_NONE = 1;
+  CORRECTION_POLICY_REJECT_INVALID = 2;
+  CORRECTION_POLICY_INTERPOLATE_LINEAR = 3;
+  CORRECTION_POLICY_INTERPOLATE_CUBIC = 4;
+  CORRECTION_POLICY_PERCENT_THRESHOLD = 5;
+}
+
 /// Digital filter specification and provenance metadata.
 message FilterSpec {
   FilterKind kind = 1;
@@ -421,6 +448,16 @@ message RppgSignal {
   repeated RppgSegment valid_segments = 4;
   RppgQualitySummary quality = 5;
   DeviceMetadata metadata = 6;
+  SignalPolarity polarity = 7;
+}
+
+/// Normalized optical blood volume pulse (BVP) surrogate waveform matching lamina::rppg::BvpWaveform.
+message BvpWaveform {
+  double start_sec = 1;
+  double sampling_rate_hz = 2;
+  repeated double pulse_samples = 3;
+  SignalPolarity polarity = 4;
+  DeviceMetadata metadata = 5;
 }
 
 // ============================================================================
@@ -452,5 +489,7 @@ message SensorDataContainer {
 
     // rPPG optical substrate
     RppgSignal rppg_signal = 21;
+    BvpWaveform bvp_waveform = 22;
   }
 }
+

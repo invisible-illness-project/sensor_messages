@@ -91,6 +91,63 @@ final $typed_data.Uint8List filterKindDescriptor = $convert.base64Decode(
     'RfTE9XUEFTUxABEhgKFEZJTFRFUl9LSU5EX0hJR0hQQVNTEAISGAoURklMVEVSX0tJTkRfQkFO'
     'RFBBU1MQAxIVChFGSUxURVJfS0lORF9OT1RDSBAE');
 
+@$core.Deprecated('Use signalPolarityDescriptor instead')
+const SignalPolarity$json = {
+  '1': 'SignalPolarity',
+  '2': [
+    {'1': 'SIGNAL_POLARITY_UNSPECIFIED', '2': 0},
+    {'1': 'SIGNAL_POLARITY_NORMAL', '2': 1},
+    {'1': 'SIGNAL_POLARITY_INVERTED', '2': 2},
+    {'1': 'SIGNAL_POLARITY_AUTO_DETECT', '2': 3},
+  ],
+};
+
+/// Descriptor for `SignalPolarity`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List signalPolarityDescriptor = $convert.base64Decode(
+    'Cg5TaWduYWxQb2xhcml0eRIfChtTSUdOQUxfUE9MQVJJVFlfVU5TUEVDSUZJRUQQABIaChZTSU'
+    'dOQUxfUE9MQVJJVFlfTk9STUFMEAESHAoYU0lHTkFMX1BPTEFSSVRZX0lOVkVSVEVEEAISHwob'
+    'U0lHTkFMX1BPTEFSSVRZX0FVVE9fREVURUNUEAM=');
+
+@$core.Deprecated('Use intervalQualityKindDescriptor instead')
+const IntervalQualityKind$json = {
+  '1': 'IntervalQualityKind',
+  '2': [
+    {'1': 'INTERVAL_QUALITY_UNSPECIFIED', '2': 0},
+    {'1': 'INTERVAL_QUALITY_NORMAL_NN', '2': 1},
+    {'1': 'INTERVAL_QUALITY_ECTOPIC_RR', '2': 2},
+    {'1': 'INTERVAL_QUALITY_ARTIFACT_RR', '2': 3},
+    {'1': 'INTERVAL_QUALITY_MISSING', '2': 4},
+  ],
+};
+
+/// Descriptor for `IntervalQualityKind`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List intervalQualityKindDescriptor = $convert.base64Decode(
+    'ChNJbnRlcnZhbFF1YWxpdHlLaW5kEiAKHElOVEVSVkFMX1FVQUxJVFlfVU5TUEVDSUZJRUQQAB'
+    'IeChpJTlRFUlZBTF9RVUFMSVRZX05PUk1BTF9OThABEh8KG0lOVEVSVkFMX1FVQUxJVFlfRUNU'
+    'T1BJQ19SUhACEiAKHElOVEVSVkFMX1FVQUxJVFlfQVJUSUZBQ1RfUlIQAxIcChhJTlRFUlZBTF'
+    '9RVUFMSVRZX01JU1NJTkcQBA==');
+
+@$core.Deprecated('Use correctionPolicyKindDescriptor instead')
+const CorrectionPolicyKind$json = {
+  '1': 'CorrectionPolicyKind',
+  '2': [
+    {'1': 'CORRECTION_POLICY_UNSPECIFIED', '2': 0},
+    {'1': 'CORRECTION_POLICY_NONE', '2': 1},
+    {'1': 'CORRECTION_POLICY_REJECT_INVALID', '2': 2},
+    {'1': 'CORRECTION_POLICY_INTERPOLATE_LINEAR', '2': 3},
+    {'1': 'CORRECTION_POLICY_INTERPOLATE_CUBIC', '2': 4},
+    {'1': 'CORRECTION_POLICY_PERCENT_THRESHOLD', '2': 5},
+  ],
+};
+
+/// Descriptor for `CorrectionPolicyKind`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List correctionPolicyKindDescriptor = $convert.base64Decode(
+    'ChRDb3JyZWN0aW9uUG9saWN5S2luZBIhCh1DT1JSRUNUSU9OX1BPTElDWV9VTlNQRUNJRklFRB'
+    'AAEhoKFkNPUlJFQ1RJT05fUE9MSUNZX05PTkUQARIkCiBDT1JSRUNUSU9OX1BPTElDWV9SRUpF'
+    'Q1RfSU5WQUxJRBACEigKJENPUlJFQ1RJT05fUE9MSUNZX0lOVEVSUE9MQVRFX0xJTkVBUhADEi'
+    'cKI0NPUlJFQ1RJT05fUE9MSUNZX0lOVEVSUE9MQVRFX0NVQklDEAQSJwojQ09SUkVDVElPTl9Q'
+    'T0xJQ1lfUEVSQ0VOVF9USFJFU0hPTEQQBQ==');
+
 @$core.Deprecated('Use featureQualityIssueDescriptor instead')
 const FeatureQualityIssue$json = {
   '1': 'FeatureQualityIssue',
@@ -1696,6 +1753,14 @@ const RppgSignal$json = {
       '6': '.invisible_illness.sensor.v1.DeviceMetadata',
       '10': 'metadata'
     },
+    {
+      '1': 'polarity',
+      '3': 7,
+      '4': 1,
+      '5': 14,
+      '6': '.invisible_illness.sensor.v1.SignalPolarity',
+      '10': 'polarity'
+    },
   ],
 };
 
@@ -1707,7 +1772,42 @@ final $typed_data.Uint8List rppgSignalDescriptor = $convert.base64Decode(
     'Vuc29yLnYxLlJwcGdTZWdtZW50Ug12YWxpZFNlZ21lbnRzEkkKB3F1YWxpdHkYBSABKAsyLy5p'
     'bnZpc2libGVfaWxsbmVzcy5zZW5zb3IudjEuUnBwZ1F1YWxpdHlTdW1tYXJ5UgdxdWFsaXR5Ek'
     'cKCG1ldGFkYXRhGAYgASgLMisuaW52aXNpYmxlX2lsbG5lc3Muc2Vuc29yLnYxLkRldmljZU1l'
-    'dGFkYXRhUghtZXRhZGF0YQ==');
+    'dGFkYXRhUghtZXRhZGF0YRJHCghwb2xhcml0eRgHIAEoDjIrLmludmlzaWJsZV9pbGxuZXNzLn'
+    'NlbnNvci52MS5TaWduYWxQb2xhcml0eVIIcG9sYXJpdHk=');
+
+@$core.Deprecated('Use bvpWaveformDescriptor instead')
+const BvpWaveform$json = {
+  '1': 'BvpWaveform',
+  '2': [
+    {'1': 'start_sec', '3': 1, '4': 1, '5': 1, '10': 'startSec'},
+    {'1': 'sampling_rate_hz', '3': 2, '4': 1, '5': 1, '10': 'samplingRateHz'},
+    {'1': 'pulse_samples', '3': 3, '4': 3, '5': 1, '10': 'pulseSamples'},
+    {
+      '1': 'polarity',
+      '3': 4,
+      '4': 1,
+      '5': 14,
+      '6': '.invisible_illness.sensor.v1.SignalPolarity',
+      '10': 'polarity'
+    },
+    {
+      '1': 'metadata',
+      '3': 5,
+      '4': 1,
+      '5': 11,
+      '6': '.invisible_illness.sensor.v1.DeviceMetadata',
+      '10': 'metadata'
+    },
+  ],
+};
+
+/// Descriptor for `BvpWaveform`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List bvpWaveformDescriptor = $convert.base64Decode(
+    'CgtCdnBXYXZlZm9ybRIbCglzdGFydF9zZWMYASABKAFSCHN0YXJ0U2VjEigKEHNhbXBsaW5nX3'
+    'JhdGVfaHoYAiABKAFSDnNhbXBsaW5nUmF0ZUh6EiMKDXB1bHNlX3NhbXBsZXMYAyADKAFSDHB1'
+    'bHNlU2FtcGxlcxJHCghwb2xhcml0eRgEIAEoDjIrLmludmlzaWJsZV9pbGxuZXNzLnNlbnNvci'
+    '52MS5TaWduYWxQb2xhcml0eVIIcG9sYXJpdHkSRwoIbWV0YWRhdGEYBSABKAsyKy5pbnZpc2li'
+    'bGVfaWxsbmVzcy5zZW5zb3IudjEuRGV2aWNlTWV0YWRhdGFSCG1ldGFkYXRh');
 
 @$core.Deprecated('Use sensorDataContainerDescriptor instead')
 const SensorDataContainer$json = {
@@ -1837,6 +1937,15 @@ const SensorDataContainer$json = {
       '9': 0,
       '10': 'rppgSignal'
     },
+    {
+      '1': 'bvp_waveform',
+      '3': 22,
+      '4': 1,
+      '5': 11,
+      '6': '.invisible_illness.sensor.v1.BvpWaveform',
+      '9': 0,
+      '10': 'bvpWaveform'
+    },
   ],
   '8': [
     {'1': 'payload'},
@@ -1867,4 +1976,5 @@ final $typed_data.Uint8List sensorDataContainerDescriptor = $convert.base64Decod
     '9ySABSDWZlYXR1cmVWZWN0b3ISVgoPYXV0b25vbWljX3N0YXRlGBQgASgLMisuaW52aXNpYmxl'
     'X2lsbG5lc3Muc2Vuc29yLnYxLkF1dG9ub21pY1N0YXRlSABSDmF1dG9ub21pY1N0YXRlEkoKC3'
     'JwcGdfc2lnbmFsGBUgASgLMicuaW52aXNpYmxlX2lsbG5lc3Muc2Vuc29yLnYxLlJwcGdTaWdu'
-    'YWxIAFIKcnBwZ1NpZ25hbEIJCgdwYXlsb2Fk');
+    'YWxIAFIKcnBwZ1NpZ25hbBJNCgxidnBfd2F2ZWZvcm0YFiABKAsyKC5pbnZpc2libGVfaWxsbm'
+    'Vzcy5zZW5zb3IudjEuQnZwV2F2ZWZvcm1IAFILYnZwV2F2ZWZvcm1CCQoHcGF5bG9hZA==');

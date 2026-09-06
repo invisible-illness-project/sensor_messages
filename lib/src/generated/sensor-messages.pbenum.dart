@@ -143,6 +143,103 @@ class FilterKind extends $pb.ProtobufEnum {
   const FilterKind._(super.value, super.name);
 }
 
+/// / Signal polarity convention for optical surrogates and blood volume pulse (BVP) waveforms matching lamina::rppg::SignalPolarity.
+class SignalPolarity extends $pb.ProtobufEnum {
+  static const SignalPolarity SIGNAL_POLARITY_UNSPECIFIED =
+      SignalPolarity._(0, _omitEnumNames ? '' : 'SIGNAL_POLARITY_UNSPECIFIED');
+  static const SignalPolarity SIGNAL_POLARITY_NORMAL =
+      SignalPolarity._(1, _omitEnumNames ? '' : 'SIGNAL_POLARITY_NORMAL');
+  static const SignalPolarity SIGNAL_POLARITY_INVERTED =
+      SignalPolarity._(2, _omitEnumNames ? '' : 'SIGNAL_POLARITY_INVERTED');
+  static const SignalPolarity SIGNAL_POLARITY_AUTO_DETECT =
+      SignalPolarity._(3, _omitEnumNames ? '' : 'SIGNAL_POLARITY_AUTO_DETECT');
+
+  static const $core.List<SignalPolarity> values = <SignalPolarity>[
+    SIGNAL_POLARITY_UNSPECIFIED,
+    SIGNAL_POLARITY_NORMAL,
+    SIGNAL_POLARITY_INVERTED,
+    SIGNAL_POLARITY_AUTO_DETECT,
+  ];
+
+  static final $core.List<SignalPolarity?> _byValue =
+      $pb.ProtobufEnum.$_initByValueList(values, 3);
+  static SignalPolarity? valueOf($core.int value) =>
+      value < 0 || value >= _byValue.length ? null : _byValue[value];
+
+  const SignalPolarity._(super.value, super.name);
+}
+
+/// / Interval quality category matching lamina::hrv::IntervalQuality.
+class IntervalQualityKind extends $pb.ProtobufEnum {
+  static const IntervalQualityKind INTERVAL_QUALITY_UNSPECIFIED =
+      IntervalQualityKind._(
+          0, _omitEnumNames ? '' : 'INTERVAL_QUALITY_UNSPECIFIED');
+  static const IntervalQualityKind INTERVAL_QUALITY_NORMAL_NN =
+      IntervalQualityKind._(
+          1, _omitEnumNames ? '' : 'INTERVAL_QUALITY_NORMAL_NN');
+  static const IntervalQualityKind INTERVAL_QUALITY_ECTOPIC_RR =
+      IntervalQualityKind._(
+          2, _omitEnumNames ? '' : 'INTERVAL_QUALITY_ECTOPIC_RR');
+  static const IntervalQualityKind INTERVAL_QUALITY_ARTIFACT_RR =
+      IntervalQualityKind._(
+          3, _omitEnumNames ? '' : 'INTERVAL_QUALITY_ARTIFACT_RR');
+  static const IntervalQualityKind INTERVAL_QUALITY_MISSING =
+      IntervalQualityKind._(
+          4, _omitEnumNames ? '' : 'INTERVAL_QUALITY_MISSING');
+
+  static const $core.List<IntervalQualityKind> values = <IntervalQualityKind>[
+    INTERVAL_QUALITY_UNSPECIFIED,
+    INTERVAL_QUALITY_NORMAL_NN,
+    INTERVAL_QUALITY_ECTOPIC_RR,
+    INTERVAL_QUALITY_ARTIFACT_RR,
+    INTERVAL_QUALITY_MISSING,
+  ];
+
+  static final $core.List<IntervalQualityKind?> _byValue =
+      $pb.ProtobufEnum.$_initByValueList(values, 4);
+  static IntervalQualityKind? valueOf($core.int value) =>
+      value < 0 || value >= _byValue.length ? null : _byValue[value];
+
+  const IntervalQualityKind._(super.value, super.name);
+}
+
+/// / Interval correction policy kind matching lamina::hrv::CorrectionPolicy.
+class CorrectionPolicyKind extends $pb.ProtobufEnum {
+  static const CorrectionPolicyKind CORRECTION_POLICY_UNSPECIFIED =
+      CorrectionPolicyKind._(
+          0, _omitEnumNames ? '' : 'CORRECTION_POLICY_UNSPECIFIED');
+  static const CorrectionPolicyKind CORRECTION_POLICY_NONE =
+      CorrectionPolicyKind._(1, _omitEnumNames ? '' : 'CORRECTION_POLICY_NONE');
+  static const CorrectionPolicyKind CORRECTION_POLICY_REJECT_INVALID =
+      CorrectionPolicyKind._(
+          2, _omitEnumNames ? '' : 'CORRECTION_POLICY_REJECT_INVALID');
+  static const CorrectionPolicyKind CORRECTION_POLICY_INTERPOLATE_LINEAR =
+      CorrectionPolicyKind._(
+          3, _omitEnumNames ? '' : 'CORRECTION_POLICY_INTERPOLATE_LINEAR');
+  static const CorrectionPolicyKind CORRECTION_POLICY_INTERPOLATE_CUBIC =
+      CorrectionPolicyKind._(
+          4, _omitEnumNames ? '' : 'CORRECTION_POLICY_INTERPOLATE_CUBIC');
+  static const CorrectionPolicyKind CORRECTION_POLICY_PERCENT_THRESHOLD =
+      CorrectionPolicyKind._(
+          5, _omitEnumNames ? '' : 'CORRECTION_POLICY_PERCENT_THRESHOLD');
+
+  static const $core.List<CorrectionPolicyKind> values = <CorrectionPolicyKind>[
+    CORRECTION_POLICY_UNSPECIFIED,
+    CORRECTION_POLICY_NONE,
+    CORRECTION_POLICY_REJECT_INVALID,
+    CORRECTION_POLICY_INTERPOLATE_LINEAR,
+    CORRECTION_POLICY_INTERPOLATE_CUBIC,
+    CORRECTION_POLICY_PERCENT_THRESHOLD,
+  ];
+
+  static final $core.List<CorrectionPolicyKind?> _byValue =
+      $pb.ProtobufEnum.$_initByValueList(values, 5);
+  static CorrectionPolicyKind? valueOf($core.int value) =>
+      value < 0 || value >= _byValue.length ? null : _byValue[value];
+
+  const CorrectionPolicyKind._(super.value, super.name);
+}
+
 /// / Feature quality issue enumeration matching lamina::features::quality::FeatureQualityIssue.
 class FeatureQualityIssue extends $pb.ProtobufEnum {
   static const FeatureQualityIssue FEATURE_QUALITY_ISSUE_UNSPECIFIED =
