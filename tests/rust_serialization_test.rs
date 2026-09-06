@@ -347,7 +347,7 @@ fn test_lamina_autonomic_state_roundtrip() {
             coupling: lamina_state.confidence.coupling,
         }),
         metadata: Some(DeviceMetadata {
-            device_id: "ROEH_ESTIMATOR_01".to_string(),
+            device_id: "LAMINA_ESTIMATOR_01".to_string(),
             patient_id: "PATIENT_X".to_string(),
             session_id: "SESS_TEST".to_string(),
             hardware_model: "".to_string(),

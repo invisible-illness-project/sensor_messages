@@ -14,7 +14,7 @@ import 'dart:core' as $core;
 
 import 'package:protobuf/protobuf.dart' as $pb;
 
-/// / Primary sensor modalities across Roeh Health hardware & processing stack.
+/// / Primary sensor modalities across Invisible Illness Project hardware & processing stack.
 class SensorModality extends $pb.ProtobufEnum {
   static const SensorModality SENSOR_MODALITY_UNSPECIFIED =
       SensorModality._(0, _omitEnumNames ? '' : 'SENSOR_MODALITY_UNSPECIFIED');

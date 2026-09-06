@@ -1,4 +1,4 @@
-# Roeh Health Sensor Processing Architecture & Protobuf Contract Report (`roeh.sensor.v1`)
+# Invisible Illness Project Sensor Processing Architecture & Protobuf Contract Report (`invisible_illness.sensor.v1`)
 
 **Author:** Staff Systems / Software Engineer  
 **Repository:** `sensor_messages` (`/home/eddiem3/development/roeh-health/sensor_messages`)  
@@ -9,13 +9,13 @@
 
 ## Executive Summary
 
-This report documents the architectural upgrade of the `sensor_messages` protocol buffer schema to serve as the definitive, language-neutral transport contract across the Roeh Health sensor processing stack. **Lamina** is established as the computational source of truth for signal processing and physiological feature extraction across three primary target environments:
+This report documents the architectural upgrade of the `sensor_messages` protocol buffer schema to serve as the definitive, language-neutral transport contract across the Invisible Illness Project sensor processing stack. **Lamina** is established as the computational source of truth for signal processing and physiological feature extraction across three primary target environments:
 
 1. **Rust**: Core sensor management (`sensor-manager`), high-throughput stream ingestion, and real-time processing.
 2. **Dart / Mobile**: On-device real-time sensor processing, physiological feature rendering, and client application state.
 3. **Python / Web**: Scientific analysis, validation, machine learning, and high-level analytical dashboards.
 
-The updated schema (`roeh.sensor.v1`) replaces the legacy schema with a production-grade, strongly-typed representation capable of transporting raw sensor data, extracted event detections, windowed multimodal feature vectors, autonomic state evidence, and optical remote photoplethysmography (rPPG) substrates.
+The updated schema (`invisible_illness.sensor.v1`) replaces the legacy schema with a production-grade, strongly-typed representation capable of transporting raw sensor data, extracted event detections, windowed multimodal feature vectors, autonomic state evidence, and optical remote photoplethysmography (rPPG) substrates.
 
 ---
 
@@ -45,7 +45,7 @@ Per engineering directives, legacy deprecated field tags were **not** retained. 
 
 The updated protobuf schema was derived by mapping Lamina's core Rust data structures (`lamina::signal`, `lamina::ecg`, `lamina::ppg`, `lamina::eda`, `lamina::rsp`, `lamina::multimodal`, `lamina::features`, `lamina::autonomic`, `lamina::rppg`) directly into language-neutral protobuf messages.
 
-| Lamina Concept / Rust Type | Protobuf Representation (`roeh.sensor.v1`) | Semantic Notes |
+| Lamina Concept / Rust Type | Protobuf Representation (`invisible_illness.sensor.v1`) | Semantic Notes |
 | :--- | :--- | :--- |
 | `lamina::features::TimedSignal` | `ContinuousSignalBatch` | 1D continuous array, `start_offset_sec`, `sampling_rate_hz`, missing value mask, filter spec |
 | Multi-axis Accel / Gyro / PPG | `MultiChannelSignalBatch` | Multi-channel matrix `repeated DoubleArray`, synchronized sampling rate, channel names/units |
@@ -190,7 +190,7 @@ Compilation, code generation, and round-trip serialization tests were executed a
 3. **For Python / Scientific Analysis**:
    Install or include `sensor_messages` in `PYTHONPATH`:
    ```bash
-   pip install -e /home/eddiem3/development/roeh-health/sensor_messages
+   pip install -e .
    ```
 4. **Re-generating Bindings**:
    Run the master generation script after updating `.proto` files:

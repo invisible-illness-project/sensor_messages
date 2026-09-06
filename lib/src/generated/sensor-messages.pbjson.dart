@@ -146,7 +146,7 @@ const FilterSpec$json = {
       '3': 1,
       '4': 1,
       '5': 14,
-      '6': '.roeh.sensor.v1.FilterKind',
+      '6': '.invisible_illness.sensor.v1.FilterKind',
       '10': 'kind'
     },
     {'1': 'sampling_rate_hz', '3': 2, '4': 1, '5': 1, '10': 'samplingRateHz'},
@@ -157,9 +157,10 @@ const FilterSpec$json = {
 
 /// Descriptor for `FilterSpec`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List filterSpecDescriptor = $convert.base64Decode(
-    'CgpGaWx0ZXJTcGVjEi4KBGtpbmQYASABKA4yGi5yb2VoLnNlbnNvci52MS5GaWx0ZXJLaW5kUg'
-    'RraW5kEigKEHNhbXBsaW5nX3JhdGVfaHoYAiABKAFSDnNhbXBsaW5nUmF0ZUh6Eh0KCmN1dG9m'
-    'ZnNfaHoYAyADKAFSCWN1dG9mZnNIehIUCgVvcmRlchgEIAEoDVIFb3JkZXI=');
+    'CgpGaWx0ZXJTcGVjEjsKBGtpbmQYASABKA4yJy5pbnZpc2libGVfaWxsbmVzcy5zZW5zb3Iudj'
+    'EuRmlsdGVyS2luZFIEa2luZBIoChBzYW1wbGluZ19yYXRlX2h6GAIgASgBUg5zYW1wbGluZ1Jh'
+    'dGVIehIdCgpjdXRvZmZzX2h6GAMgAygBUgljdXRvZmZzSHoSFAoFb3JkZXIYBCABKA1SBW9yZG'
+    'Vy');
 
 @$core.Deprecated('Use doubleArrayDescriptor instead')
 const DoubleArray$json = {
@@ -192,7 +193,7 @@ const ContinuousSignalBatch$json = {
       '3': 4,
       '4': 1,
       '5': 14,
-      '6': '.roeh.sensor.v1.SensorModality',
+      '6': '.invisible_illness.sensor.v1.SensorModality',
       '10': 'modality'
     },
     {
@@ -200,7 +201,7 @@ const ContinuousSignalBatch$json = {
       '3': 5,
       '4': 1,
       '5': 14,
-      '6': '.roeh.sensor.v1.PhysicalUnit',
+      '6': '.invisible_illness.sensor.v1.PhysicalUnit',
       '10': 'unit'
     },
     {'1': 'channel_name', '3': 6, '4': 1, '5': 9, '10': 'channelName'},
@@ -211,7 +212,7 @@ const ContinuousSignalBatch$json = {
       '3': 9,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.FilterSpec',
+      '6': '.invisible_illness.sensor.v1.FilterSpec',
       '10': 'filterApplied'
     },
     {
@@ -219,7 +220,7 @@ const ContinuousSignalBatch$json = {
       '3': 10,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.DeviceMetadata',
+      '6': '.invisible_illness.sensor.v1.DeviceMetadata',
       '10': 'metadata'
     },
   ],
@@ -230,13 +231,14 @@ final $typed_data.Uint8List continuousSignalBatchDescriptor = $convert.base64Dec
     'ChVDb250aW51b3VzU2lnbmFsQmF0Y2gSQwoPc3RhcnRfdGltZXN0YW1wGAEgASgLMhouZ29vZ2'
     'xlLnByb3RvYnVmLlRpbWVzdGFtcFIOc3RhcnRUaW1lc3RhbXASKAoQc3RhcnRfb2Zmc2V0X3Nl'
     'YxgCIAEoAVIOc3RhcnRPZmZzZXRTZWMSKAoQc2FtcGxpbmdfcmF0ZV9oehgDIAEoAVIOc2FtcG'
-    'xpbmdSYXRlSHoSOgoIbW9kYWxpdHkYBCABKA4yHi5yb2VoLnNlbnNvci52MS5TZW5zb3JNb2Rh'
-    'bGl0eVIIbW9kYWxpdHkSMAoEdW5pdBgFIAEoDjIcLnJvZWguc2Vuc29yLnYxLlBoeXNpY2FsVW'
-    '5pdFIEdW5pdBIhCgxjaGFubmVsX25hbWUYBiABKAlSC2NoYW5uZWxOYW1lEhgKB3NhbXBsZXMY'
-    'ByADKAFSB3NhbXBsZXMSIQoMbWlzc2luZ19tYXNrGAggAygIUgttaXNzaW5nTWFzaxJBCg5maW'
-    'x0ZXJfYXBwbGllZBgJIAEoCzIaLnJvZWguc2Vuc29yLnYxLkZpbHRlclNwZWNSDWZpbHRlckFw'
-    'cGxpZWQSOgoIbWV0YWRhdGEYCiABKAsyHi5yb2VoLnNlbnNvci52MS5EZXZpY2VNZXRhZGF0YV'
-    'IIbWV0YWRhdGE=');
+    'xpbmdSYXRlSHoSRwoIbW9kYWxpdHkYBCABKA4yKy5pbnZpc2libGVfaWxsbmVzcy5zZW5zb3Iu'
+    'djEuU2Vuc29yTW9kYWxpdHlSCG1vZGFsaXR5Ej0KBHVuaXQYBSABKA4yKS5pbnZpc2libGVfaW'
+    'xsbmVzcy5zZW5zb3IudjEuUGh5c2ljYWxVbml0UgR1bml0EiEKDGNoYW5uZWxfbmFtZRgGIAEo'
+    'CVILY2hhbm5lbE5hbWUSGAoHc2FtcGxlcxgHIAMoAVIHc2FtcGxlcxIhCgxtaXNzaW5nX21hc2'
+    'sYCCADKAhSC21pc3NpbmdNYXNrEk4KDmZpbHRlcl9hcHBsaWVkGAkgASgLMicuaW52aXNpYmxl'
+    'X2lsbG5lc3Muc2Vuc29yLnYxLkZpbHRlclNwZWNSDWZpbHRlckFwcGxpZWQSRwoIbWV0YWRhdG'
+    'EYCiABKAsyKy5pbnZpc2libGVfaWxsbmVzcy5zZW5zb3IudjEuRGV2aWNlTWV0YWRhdGFSCG1l'
+    'dGFkYXRh');
 
 @$core.Deprecated('Use multiChannelSignalBatchDescriptor instead')
 const MultiChannelSignalBatch$json = {
@@ -257,7 +259,7 @@ const MultiChannelSignalBatch$json = {
       '3': 4,
       '4': 1,
       '5': 14,
-      '6': '.roeh.sensor.v1.SensorModality',
+      '6': '.invisible_illness.sensor.v1.SensorModality',
       '10': 'modality'
     },
     {'1': 'channel_names', '3': 5, '4': 3, '5': 9, '10': 'channelNames'},
@@ -266,7 +268,7 @@ const MultiChannelSignalBatch$json = {
       '3': 6,
       '4': 3,
       '5': 14,
-      '6': '.roeh.sensor.v1.PhysicalUnit',
+      '6': '.invisible_illness.sensor.v1.PhysicalUnit',
       '10': 'channelUnits'
     },
     {
@@ -274,7 +276,7 @@ const MultiChannelSignalBatch$json = {
       '3': 7,
       '4': 3,
       '5': 11,
-      '6': '.roeh.sensor.v1.DoubleArray',
+      '6': '.invisible_illness.sensor.v1.DoubleArray',
       '10': 'channelSamples'
     },
     {
@@ -282,7 +284,7 @@ const MultiChannelSignalBatch$json = {
       '3': 8,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.DeviceMetadata',
+      '6': '.invisible_illness.sensor.v1.DeviceMetadata',
       '10': 'metadata'
     },
   ],
@@ -293,12 +295,13 @@ final $typed_data.Uint8List multiChannelSignalBatchDescriptor = $convert.base64D
     'ChdNdWx0aUNoYW5uZWxTaWduYWxCYXRjaBJDCg9zdGFydF90aW1lc3RhbXAYASABKAsyGi5nb2'
     '9nbGUucHJvdG9idWYuVGltZXN0YW1wUg5zdGFydFRpbWVzdGFtcBIoChBzdGFydF9vZmZzZXRf'
     'c2VjGAIgASgBUg5zdGFydE9mZnNldFNlYxIoChBzYW1wbGluZ19yYXRlX2h6GAMgASgBUg5zYW'
-    '1wbGluZ1JhdGVIehI6Cghtb2RhbGl0eRgEIAEoDjIeLnJvZWguc2Vuc29yLnYxLlNlbnNvck1v'
-    'ZGFsaXR5Ughtb2RhbGl0eRIjCg1jaGFubmVsX25hbWVzGAUgAygJUgxjaGFubmVsTmFtZXMSQQ'
-    'oNY2hhbm5lbF91bml0cxgGIAMoDjIcLnJvZWguc2Vuc29yLnYxLlBoeXNpY2FsVW5pdFIMY2hh'
-    'bm5lbFVuaXRzEkQKD2NoYW5uZWxfc2FtcGxlcxgHIAMoCzIbLnJvZWguc2Vuc29yLnYxLkRvdW'
-    'JsZUFycmF5Ug5jaGFubmVsU2FtcGxlcxI6CghtZXRhZGF0YRgIIAEoCzIeLnJvZWguc2Vuc29y'
-    'LnYxLkRldmljZU1ldGFkYXRhUghtZXRhZGF0YQ==');
+    '1wbGluZ1JhdGVIehJHCghtb2RhbGl0eRgEIAEoDjIrLmludmlzaWJsZV9pbGxuZXNzLnNlbnNv'
+    'ci52MS5TZW5zb3JNb2RhbGl0eVIIbW9kYWxpdHkSIwoNY2hhbm5lbF9uYW1lcxgFIAMoCVIMY2'
+    'hhbm5lbE5hbWVzEk4KDWNoYW5uZWxfdW5pdHMYBiADKA4yKS5pbnZpc2libGVfaWxsbmVzcy5z'
+    'ZW5zb3IudjEuUGh5c2ljYWxVbml0UgxjaGFubmVsVW5pdHMSUQoPY2hhbm5lbF9zYW1wbGVzGA'
+    'cgAygLMiguaW52aXNpYmxlX2lsbG5lc3Muc2Vuc29yLnYxLkRvdWJsZUFycmF5Ug5jaGFubmVs'
+    'U2FtcGxlcxJHCghtZXRhZGF0YRgIIAEoCzIrLmludmlzaWJsZV9pbGxuZXNzLnNlbnNvci52MS'
+    '5EZXZpY2VNZXRhZGF0YVIIbWV0YWRhdGE=');
 
 @$core.Deprecated('Use singlePointMeasurementDescriptor instead')
 const SinglePointMeasurement$json = {
@@ -317,7 +320,7 @@ const SinglePointMeasurement$json = {
       '3': 2,
       '4': 1,
       '5': 14,
-      '6': '.roeh.sensor.v1.SensorModality',
+      '6': '.invisible_illness.sensor.v1.SensorModality',
       '10': 'modality'
     },
     {'1': 'value', '3': 3, '4': 1, '5': 1, '10': 'value'},
@@ -326,7 +329,7 @@ const SinglePointMeasurement$json = {
       '3': 4,
       '4': 1,
       '5': 14,
-      '6': '.roeh.sensor.v1.PhysicalUnit',
+      '6': '.invisible_illness.sensor.v1.PhysicalUnit',
       '10': 'unit'
     },
     {'1': 'metric_name', '3': 5, '4': 1, '5': 9, '10': 'metricName'},
@@ -335,7 +338,7 @@ const SinglePointMeasurement$json = {
       '3': 6,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.DeviceMetadata',
+      '6': '.invisible_illness.sensor.v1.DeviceMetadata',
       '10': 'metadata'
     },
   ],
@@ -344,11 +347,12 @@ const SinglePointMeasurement$json = {
 /// Descriptor for `SinglePointMeasurement`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List singlePointMeasurementDescriptor = $convert.base64Decode(
     'ChZTaW5nbGVQb2ludE1lYXN1cmVtZW50EjgKCXRpbWVzdGFtcBgBIAEoCzIaLmdvb2dsZS5wcm'
-    '90b2J1Zi5UaW1lc3RhbXBSCXRpbWVzdGFtcBI6Cghtb2RhbGl0eRgCIAEoDjIeLnJvZWguc2Vu'
-    'c29yLnYxLlNlbnNvck1vZGFsaXR5Ughtb2RhbGl0eRIUCgV2YWx1ZRgDIAEoAVIFdmFsdWUSMA'
-    'oEdW5pdBgEIAEoDjIcLnJvZWguc2Vuc29yLnYxLlBoeXNpY2FsVW5pdFIEdW5pdBIfCgttZXRy'
-    'aWNfbmFtZRgFIAEoCVIKbWV0cmljTmFtZRI6CghtZXRhZGF0YRgGIAEoCzIeLnJvZWguc2Vuc2'
-    '9yLnYxLkRldmljZU1ldGFkYXRhUghtZXRhZGF0YQ==');
+    '90b2J1Zi5UaW1lc3RhbXBSCXRpbWVzdGFtcBJHCghtb2RhbGl0eRgCIAEoDjIrLmludmlzaWJs'
+    'ZV9pbGxuZXNzLnNlbnNvci52MS5TZW5zb3JNb2RhbGl0eVIIbW9kYWxpdHkSFAoFdmFsdWUYAy'
+    'ABKAFSBXZhbHVlEj0KBHVuaXQYBCABKA4yKS5pbnZpc2libGVfaWxsbmVzcy5zZW5zb3IudjEu'
+    'UGh5c2ljYWxVbml0UgR1bml0Eh8KC21ldHJpY19uYW1lGAUgASgJUgptZXRyaWNOYW1lEkcKCG'
+    '1ldGFkYXRhGAYgASgLMisuaW52aXNpYmxlX2lsbG5lc3Muc2Vuc29yLnYxLkRldmljZU1ldGFk'
+    'YXRhUghtZXRhZGF0YQ==');
 
 @$core.Deprecated('Use bloodPressureMeasurementDescriptor instead')
 const BloodPressureMeasurement$json = {
@@ -369,7 +373,7 @@ const BloodPressureMeasurement$json = {
       '3': 4,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.DeviceMetadata',
+      '6': '.invisible_illness.sensor.v1.DeviceMetadata',
       '10': 'metadata'
     },
   ],
@@ -379,8 +383,9 @@ const BloodPressureMeasurement$json = {
 final $typed_data.Uint8List bloodPressureMeasurementDescriptor = $convert.base64Decode(
     'ChhCbG9vZFByZXNzdXJlTWVhc3VyZW1lbnQSOAoJdGltZXN0YW1wGAEgASgLMhouZ29vZ2xlLn'
     'Byb3RvYnVmLlRpbWVzdGFtcFIJdGltZXN0YW1wEiMKDXN5c3RvbGljX21taGcYAiABKA1SDHN5'
-    'c3RvbGljTW1oZxIlCg5kaWFzdG9saWNfbW1oZxgDIAEoDVINZGlhc3RvbGljTW1oZxI6CghtZX'
-    'RhZGF0YRgEIAEoCzIeLnJvZWguc2Vuc29yLnYxLkRldmljZU1ldGFkYXRhUghtZXRhZGF0YQ==');
+    'c3RvbGljTW1oZxIlCg5kaWFzdG9saWNfbW1oZxgDIAEoDVINZGlhc3RvbGljTW1oZxJHCghtZX'
+    'RhZGF0YRgEIAEoCzIrLmludmlzaWJsZV9pbGxuZXNzLnNlbnNvci52MS5EZXZpY2VNZXRhZGF0'
+    'YVIIbWV0YWRhdGE=');
 
 @$core.Deprecated('Use cardiacPeakEventDescriptor instead')
 const CardiacPeakEvent$json = {
@@ -394,7 +399,7 @@ const CardiacPeakEvent$json = {
       '3': 4,
       '4': 1,
       '5': 14,
-      '6': '.roeh.sensor.v1.SensorModality',
+      '6': '.invisible_illness.sensor.v1.SensorModality',
       '10': 'modality'
     },
   ],
@@ -404,8 +409,8 @@ const CardiacPeakEvent$json = {
 final $typed_data.Uint8List cardiacPeakEventDescriptor = $convert.base64Decode(
     'ChBDYXJkaWFjUGVha0V2ZW50EiEKDHNhbXBsZV9pbmRleBgBIAEoBFILc2FtcGxlSW5kZXgSIw'
     'oNdGltZXN0YW1wX3NlYxgCIAEoAVIMdGltZXN0YW1wU2VjEhwKCWFtcGxpdHVkZRgDIAEoAVIJ'
-    'YW1wbGl0dWRlEjoKCG1vZGFsaXR5GAQgASgOMh4ucm9laC5zZW5zb3IudjEuU2Vuc29yTW9kYW'
-    'xpdHlSCG1vZGFsaXR5');
+    'YW1wbGl0dWRlEkcKCG1vZGFsaXR5GAQgASgOMisuaW52aXNpYmxlX2lsbG5lc3Muc2Vuc29yLn'
+    'YxLlNlbnNvck1vZGFsaXR5Ughtb2RhbGl0eQ==');
 
 @$core.Deprecated('Use cardiacPeakBatchDescriptor instead')
 const CardiacPeakBatch$json = {
@@ -416,7 +421,7 @@ const CardiacPeakBatch$json = {
       '3': 1,
       '4': 3,
       '5': 11,
-      '6': '.roeh.sensor.v1.CardiacPeakEvent',
+      '6': '.invisible_illness.sensor.v1.CardiacPeakEvent',
       '10': 'events'
     },
     {'1': 'sampling_rate_hz', '3': 2, '4': 1, '5': 1, '10': 'samplingRateHz'},
@@ -426,7 +431,7 @@ const CardiacPeakBatch$json = {
       '3': 4,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.DeviceMetadata',
+      '6': '.invisible_illness.sensor.v1.DeviceMetadata',
       '10': 'metadata'
     },
   ],
@@ -434,10 +439,11 @@ const CardiacPeakBatch$json = {
 
 /// Descriptor for `CardiacPeakBatch`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List cardiacPeakBatchDescriptor = $convert.base64Decode(
-    'ChBDYXJkaWFjUGVha0JhdGNoEjgKBmV2ZW50cxgBIAMoCzIgLnJvZWguc2Vuc29yLnYxLkNhcm'
-    'RpYWNQZWFrRXZlbnRSBmV2ZW50cxIoChBzYW1wbGluZ19yYXRlX2h6GAIgASgBUg5zYW1wbGlu'
-    'Z1JhdGVIehIdCgpvZmZzZXRfc2VjGAMgASgBUglvZmZzZXRTZWMSOgoIbWV0YWRhdGEYBCABKA'
-    'syHi5yb2VoLnNlbnNvci52MS5EZXZpY2VNZXRhZGF0YVIIbWV0YWRhdGE=');
+    'ChBDYXJkaWFjUGVha0JhdGNoEkUKBmV2ZW50cxgBIAMoCzItLmludmlzaWJsZV9pbGxuZXNzLn'
+    'NlbnNvci52MS5DYXJkaWFjUGVha0V2ZW50UgZldmVudHMSKAoQc2FtcGxpbmdfcmF0ZV9oehgC'
+    'IAEoAVIOc2FtcGxpbmdSYXRlSHoSHQoKb2Zmc2V0X3NlYxgDIAEoAVIJb2Zmc2V0U2VjEkcKCG'
+    '1ldGFkYXRhGAQgASgLMisuaW52aXNpYmxlX2lsbG5lc3Muc2Vuc29yLnYxLkRldmljZU1ldGFk'
+    'YXRhUghtZXRhZGF0YQ==');
 
 @$core.Deprecated('Use scrEventDescriptor instead')
 const ScrEvent$json = {
@@ -468,7 +474,7 @@ const ScrEventBatch$json = {
       '3': 1,
       '4': 3,
       '5': 11,
-      '6': '.roeh.sensor.v1.ScrEvent',
+      '6': '.invisible_illness.sensor.v1.ScrEvent',
       '10': 'events'
     },
     {'1': 'sampling_rate_hz', '3': 2, '4': 1, '5': 1, '10': 'samplingRateHz'},
@@ -478,7 +484,7 @@ const ScrEventBatch$json = {
       '3': 4,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.DeviceMetadata',
+      '6': '.invisible_illness.sensor.v1.DeviceMetadata',
       '10': 'metadata'
     },
   ],
@@ -486,10 +492,11 @@ const ScrEventBatch$json = {
 
 /// Descriptor for `ScrEventBatch`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List scrEventBatchDescriptor = $convert.base64Decode(
-    'Cg1TY3JFdmVudEJhdGNoEjAKBmV2ZW50cxgBIAMoCzIYLnJvZWguc2Vuc29yLnYxLlNjckV2ZW'
-    '50UgZldmVudHMSKAoQc2FtcGxpbmdfcmF0ZV9oehgCIAEoAVIOc2FtcGxpbmdSYXRlSHoSHQoK'
-    'b2Zmc2V0X3NlYxgDIAEoAVIJb2Zmc2V0U2VjEjoKCG1ldGFkYXRhGAQgASgLMh4ucm9laC5zZW'
-    '5zb3IudjEuRGV2aWNlTWV0YWRhdGFSCG1ldGFkYXRh');
+    'Cg1TY3JFdmVudEJhdGNoEj0KBmV2ZW50cxgBIAMoCzIlLmludmlzaWJsZV9pbGxuZXNzLnNlbn'
+    'Nvci52MS5TY3JFdmVudFIGZXZlbnRzEigKEHNhbXBsaW5nX3JhdGVfaHoYAiABKAFSDnNhbXBs'
+    'aW5nUmF0ZUh6Eh0KCm9mZnNldF9zZWMYAyABKAFSCW9mZnNldFNlYxJHCghtZXRhZGF0YRgEIA'
+    'EoCzIrLmludmlzaWJsZV9pbGxuZXNzLnNlbnNvci52MS5EZXZpY2VNZXRhZGF0YVIIbWV0YWRh'
+    'dGE=');
 
 @$core.Deprecated('Use respirationCycleDescriptor instead')
 const RespirationCycle$json = {
@@ -541,7 +548,7 @@ const RespirationCycleBatch$json = {
       '3': 1,
       '4': 3,
       '5': 11,
-      '6': '.roeh.sensor.v1.RespirationCycle',
+      '6': '.invisible_illness.sensor.v1.RespirationCycle',
       '10': 'cycles'
     },
     {'1': 'sampling_rate_hz', '3': 2, '4': 1, '5': 1, '10': 'samplingRateHz'},
@@ -551,7 +558,7 @@ const RespirationCycleBatch$json = {
       '3': 4,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.DeviceMetadata',
+      '6': '.invisible_illness.sensor.v1.DeviceMetadata',
       '10': 'metadata'
     },
   ],
@@ -559,10 +566,11 @@ const RespirationCycleBatch$json = {
 
 /// Descriptor for `RespirationCycleBatch`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List respirationCycleBatchDescriptor = $convert.base64Decode(
-    'ChVSZXNwaXJhdGlvbkN5Y2xlQmF0Y2gSOAoGY3ljbGVzGAEgAygLMiAucm9laC5zZW5zb3Iudj'
-    'EuUmVzcGlyYXRpb25DeWNsZVIGY3ljbGVzEigKEHNhbXBsaW5nX3JhdGVfaHoYAiABKAFSDnNh'
-    'bXBsaW5nUmF0ZUh6Eh0KCm9mZnNldF9zZWMYAyABKAFSCW9mZnNldFNlYxI6CghtZXRhZGF0YR'
-    'gEIAEoCzIeLnJvZWguc2Vuc29yLnYxLkRldmljZU1ldGFkYXRhUghtZXRhZGF0YQ==');
+    'ChVSZXNwaXJhdGlvbkN5Y2xlQmF0Y2gSRQoGY3ljbGVzGAEgAygLMi0uaW52aXNpYmxlX2lsbG'
+    '5lc3Muc2Vuc29yLnYxLlJlc3BpcmF0aW9uQ3ljbGVSBmN5Y2xlcxIoChBzYW1wbGluZ19yYXRl'
+    'X2h6GAIgASgBUg5zYW1wbGluZ1JhdGVIehIdCgpvZmZzZXRfc2VjGAMgASgBUglvZmZzZXRTZW'
+    'MSRwoIbWV0YWRhdGEYBCABKAsyKy5pbnZpc2libGVfaWxsbmVzcy5zZW5zb3IudjEuRGV2aWNl'
+    'TWV0YWRhdGFSCG1ldGFkYXRh');
 
 @$core.Deprecated('Use pulseTimingResultDescriptor instead')
 const PulseTimingResult$json = {
@@ -589,7 +597,7 @@ const PulseTimingBatch$json = {
       '3': 1,
       '4': 3,
       '5': 11,
-      '6': '.roeh.sensor.v1.PulseTimingResult',
+      '6': '.invisible_illness.sensor.v1.PulseTimingResult',
       '10': 'timings'
     },
     {
@@ -597,7 +605,7 @@ const PulseTimingBatch$json = {
       '3': 2,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.DeviceMetadata',
+      '6': '.invisible_illness.sensor.v1.DeviceMetadata',
       '10': 'metadata'
     },
   ],
@@ -605,9 +613,9 @@ const PulseTimingBatch$json = {
 
 /// Descriptor for `PulseTimingBatch`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List pulseTimingBatchDescriptor = $convert.base64Decode(
-    'ChBQdWxzZVRpbWluZ0JhdGNoEjsKB3RpbWluZ3MYASADKAsyIS5yb2VoLnNlbnNvci52MS5QdW'
-    'xzZVRpbWluZ1Jlc3VsdFIHdGltaW5ncxI6CghtZXRhZGF0YRgCIAEoCzIeLnJvZWguc2Vuc29y'
-    'LnYxLkRldmljZU1ldGFkYXRhUghtZXRhZGF0YQ==');
+    'ChBQdWxzZVRpbWluZ0JhdGNoEkgKB3RpbWluZ3MYASADKAsyLi5pbnZpc2libGVfaWxsbmVzcy'
+    '5zZW5zb3IudjEuUHVsc2VUaW1pbmdSZXN1bHRSB3RpbWluZ3MSRwoIbWV0YWRhdGEYAiABKAsy'
+    'Ky5pbnZpc2libGVfaWxsbmVzcy5zZW5zb3IudjEuRGV2aWNlTWV0YWRhdGFSCG1ldGFkYXRh');
 
 @$core.Deprecated('Use rsaResultDescriptor instead')
 const RsaResult$json = {
@@ -634,7 +642,7 @@ const RsaBatch$json = {
       '3': 1,
       '4': 3,
       '5': 11,
-      '6': '.roeh.sensor.v1.RsaResult',
+      '6': '.invisible_illness.sensor.v1.RsaResult',
       '10': 'results'
     },
     {
@@ -642,7 +650,7 @@ const RsaBatch$json = {
       '3': 2,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.DeviceMetadata',
+      '6': '.invisible_illness.sensor.v1.DeviceMetadata',
       '10': 'metadata'
     },
   ],
@@ -650,9 +658,9 @@ const RsaBatch$json = {
 
 /// Descriptor for `RsaBatch`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List rsaBatchDescriptor = $convert.base64Decode(
-    'CghSc2FCYXRjaBIzCgdyZXN1bHRzGAEgAygLMhkucm9laC5zZW5zb3IudjEuUnNhUmVzdWx0Ug'
-    'dyZXN1bHRzEjoKCG1ldGFkYXRhGAIgASgLMh4ucm9laC5zZW5zb3IudjEuRGV2aWNlTWV0YWRh'
-    'dGFSCG1ldGFkYXRh');
+    'CghSc2FCYXRjaBJACgdyZXN1bHRzGAEgAygLMiYuaW52aXNpYmxlX2lsbG5lc3Muc2Vuc29yLn'
+    'YxLlJzYVJlc3VsdFIHcmVzdWx0cxJHCghtZXRhZGF0YRgCIAEoCzIrLmludmlzaWJsZV9pbGxu'
+    'ZXNzLnNlbnNvci52MS5EZXZpY2VNZXRhZGF0YVIIbWV0YWRhdGE=');
 
 @$core.Deprecated('Use featureWindowDescriptor instead')
 const FeatureWindow$json = {
@@ -1075,7 +1083,7 @@ const FeatureQuality$json = {
       '3': 2,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.FeatureCoverage',
+      '6': '.invisible_illness.sensor.v1.FeatureCoverage',
       '10': 'modalityCoverage'
     },
     {'1': 'cardiac_valid', '3': 3, '4': 1, '5': 8, '10': 'cardiacValid'},
@@ -1107,7 +1115,7 @@ const FeatureQuality$json = {
       '3': 9,
       '4': 3,
       '5': 14,
-      '6': '.roeh.sensor.v1.FeatureQualityIssue',
+      '6': '.invisible_illness.sensor.v1.FeatureQualityIssue',
       '10': 'issues'
     },
   ],
@@ -1115,14 +1123,15 @@ const FeatureQuality$json = {
 
 /// Descriptor for `FeatureQuality`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List featureQualityDescriptor = $convert.base64Decode(
-    'Cg5GZWF0dXJlUXVhbGl0eRIaCghjb3ZlcmFnZRgBIAEoAVIIY292ZXJhZ2USTAoRbW9kYWxpdH'
-    'lfY292ZXJhZ2UYAiABKAsyHy5yb2VoLnNlbnNvci52MS5GZWF0dXJlQ292ZXJhZ2VSEG1vZGFs'
-    'aXR5Q292ZXJhZ2USIwoNY2FyZGlhY192YWxpZBgDIAEoCFIMY2FyZGlhY1ZhbGlkEhsKCWVkYV'
-    '92YWxpZBgEIAEoCFIIZWRhVmFsaWQSKwoRcmVzcGlyYXRpb25fdmFsaWQYBSABKAhSEHJlc3Bp'
-    'cmF0aW9uVmFsaWQSJQoOY291cGxpbmdfdmFsaWQYBiABKAhSDWNvdXBsaW5nVmFsaWQSMAoUdX'
-    'NhYmxlX2ZlYXR1cmVfY291bnQYByABKARSEnVzYWJsZUZlYXR1cmVDb3VudBIuChN0b3RhbF9m'
-    'ZWF0dXJlX2NvdW50GAggASgEUhF0b3RhbEZlYXR1cmVDb3VudBI7CgZpc3N1ZXMYCSADKA4yIy'
-    '5yb2VoLnNlbnNvci52MS5GZWF0dXJlUXVhbGl0eUlzc3VlUgZpc3N1ZXM=');
+    'Cg5GZWF0dXJlUXVhbGl0eRIaCghjb3ZlcmFnZRgBIAEoAVIIY292ZXJhZ2USWQoRbW9kYWxpdH'
+    'lfY292ZXJhZ2UYAiABKAsyLC5pbnZpc2libGVfaWxsbmVzcy5zZW5zb3IudjEuRmVhdHVyZUNv'
+    'dmVyYWdlUhBtb2RhbGl0eUNvdmVyYWdlEiMKDWNhcmRpYWNfdmFsaWQYAyABKAhSDGNhcmRpYW'
+    'NWYWxpZBIbCgllZGFfdmFsaWQYBCABKAhSCGVkYVZhbGlkEisKEXJlc3BpcmF0aW9uX3ZhbGlk'
+    'GAUgASgIUhByZXNwaXJhdGlvblZhbGlkEiUKDmNvdXBsaW5nX3ZhbGlkGAYgASgIUg1jb3VwbG'
+    'luZ1ZhbGlkEjAKFHVzYWJsZV9mZWF0dXJlX2NvdW50GAcgASgEUhJ1c2FibGVGZWF0dXJlQ291'
+    'bnQSLgoTdG90YWxfZmVhdHVyZV9jb3VudBgIIAEoBFIRdG90YWxGZWF0dXJlQ291bnQSSAoGaX'
+    'NzdWVzGAkgAygOMjAuaW52aXNpYmxlX2lsbG5lc3Muc2Vuc29yLnYxLkZlYXR1cmVRdWFsaXR5'
+    'SXNzdWVSBmlzc3Vlcw==');
 
 @$core.Deprecated('Use multimodalFeatureVectorDescriptor instead')
 const MultimodalFeatureVector$json = {
@@ -1133,7 +1142,7 @@ const MultimodalFeatureVector$json = {
       '3': 1,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.FeatureWindow',
+      '6': '.invisible_illness.sensor.v1.FeatureWindow',
       '10': 'window'
     },
     {
@@ -1141,7 +1150,7 @@ const MultimodalFeatureVector$json = {
       '3': 2,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.CardiacFeatures',
+      '6': '.invisible_illness.sensor.v1.CardiacFeatures',
       '10': 'cardiac'
     },
     {
@@ -1149,7 +1158,7 @@ const MultimodalFeatureVector$json = {
       '3': 3,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.EdaFeatures',
+      '6': '.invisible_illness.sensor.v1.EdaFeatures',
       '10': 'eda'
     },
     {
@@ -1157,7 +1166,7 @@ const MultimodalFeatureVector$json = {
       '3': 4,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.RespirationFeatures',
+      '6': '.invisible_illness.sensor.v1.RespirationFeatures',
       '10': 'respiration'
     },
     {
@@ -1165,7 +1174,7 @@ const MultimodalFeatureVector$json = {
       '3': 5,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.CouplingFeatures',
+      '6': '.invisible_illness.sensor.v1.CouplingFeatures',
       '10': 'coupling'
     },
     {
@@ -1173,7 +1182,7 @@ const MultimodalFeatureVector$json = {
       '3': 6,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.FeatureQuality',
+      '6': '.invisible_illness.sensor.v1.FeatureQuality',
       '10': 'quality'
     },
     {
@@ -1181,7 +1190,7 @@ const MultimodalFeatureVector$json = {
       '3': 7,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.DeviceMetadata',
+      '6': '.invisible_illness.sensor.v1.DeviceMetadata',
       '10': 'metadata'
     },
   ],
@@ -1189,14 +1198,16 @@ const MultimodalFeatureVector$json = {
 
 /// Descriptor for `MultimodalFeatureVector`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List multimodalFeatureVectorDescriptor = $convert.base64Decode(
-    'ChdNdWx0aW1vZGFsRmVhdHVyZVZlY3RvchI1CgZ3aW5kb3cYASABKAsyHS5yb2VoLnNlbnNvci'
-    '52MS5GZWF0dXJlV2luZG93UgZ3aW5kb3cSOQoHY2FyZGlhYxgCIAEoCzIfLnJvZWguc2Vuc29y'
-    'LnYxLkNhcmRpYWNGZWF0dXJlc1IHY2FyZGlhYxItCgNlZGEYAyABKAsyGy5yb2VoLnNlbnNvci'
-    '52MS5FZGFGZWF0dXJlc1IDZWRhEkUKC3Jlc3BpcmF0aW9uGAQgASgLMiMucm9laC5zZW5zb3Iu'
-    'djEuUmVzcGlyYXRpb25GZWF0dXJlc1ILcmVzcGlyYXRpb24SPAoIY291cGxpbmcYBSABKAsyIC'
-    '5yb2VoLnNlbnNvci52MS5Db3VwbGluZ0ZlYXR1cmVzUghjb3VwbGluZxI4CgdxdWFsaXR5GAYg'
-    'ASgLMh4ucm9laC5zZW5zb3IudjEuRmVhdHVyZVF1YWxpdHlSB3F1YWxpdHkSOgoIbWV0YWRhdG'
-    'EYByABKAsyHi5yb2VoLnNlbnNvci52MS5EZXZpY2VNZXRhZGF0YVIIbWV0YWRhdGE=');
+    'ChdNdWx0aW1vZGFsRmVhdHVyZVZlY3RvchJCCgZ3aW5kb3cYASABKAsyKi5pbnZpc2libGVfaW'
+    'xsbmVzcy5zZW5zb3IudjEuRmVhdHVyZVdpbmRvd1IGd2luZG93EkYKB2NhcmRpYWMYAiABKAsy'
+    'LC5pbnZpc2libGVfaWxsbmVzcy5zZW5zb3IudjEuQ2FyZGlhY0ZlYXR1cmVzUgdjYXJkaWFjEj'
+    'oKA2VkYRgDIAEoCzIoLmludmlzaWJsZV9pbGxuZXNzLnNlbnNvci52MS5FZGFGZWF0dXJlc1ID'
+    'ZWRhElIKC3Jlc3BpcmF0aW9uGAQgASgLMjAuaW52aXNpYmxlX2lsbG5lc3Muc2Vuc29yLnYxLl'
+    'Jlc3BpcmF0aW9uRmVhdHVyZXNSC3Jlc3BpcmF0aW9uEkkKCGNvdXBsaW5nGAUgASgLMi0uaW52'
+    'aXNpYmxlX2lsbG5lc3Muc2Vuc29yLnYxLkNvdXBsaW5nRmVhdHVyZXNSCGNvdXBsaW5nEkUKB3'
+    'F1YWxpdHkYBiABKAsyKy5pbnZpc2libGVfaWxsbmVzcy5zZW5zb3IudjEuRmVhdHVyZVF1YWxp'
+    'dHlSB3F1YWxpdHkSRwoIbWV0YWRhdGEYByABKAsyKy5pbnZpc2libGVfaWxsbmVzcy5zZW5zb3'
+    'IudjEuRGV2aWNlTWV0YWRhdGFSCG1ldGFkYXRh');
 
 @$core.Deprecated('Use cardiacStateDescriptor instead')
 const CardiacState$json = {
@@ -1466,7 +1477,7 @@ const AutonomicState$json = {
       '3': 3,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.CardiacState',
+      '6': '.invisible_illness.sensor.v1.CardiacState',
       '10': 'cardiac'
     },
     {
@@ -1474,7 +1485,7 @@ const AutonomicState$json = {
       '3': 4,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.ElectrodermalState',
+      '6': '.invisible_illness.sensor.v1.ElectrodermalState',
       '10': 'electrodermal'
     },
     {
@@ -1482,7 +1493,7 @@ const AutonomicState$json = {
       '3': 5,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.RespiratoryState',
+      '6': '.invisible_illness.sensor.v1.RespiratoryState',
       '10': 'respiratory'
     },
     {
@@ -1490,7 +1501,7 @@ const AutonomicState$json = {
       '3': 6,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.CouplingState',
+      '6': '.invisible_illness.sensor.v1.CouplingState',
       '10': 'coupling'
     },
     {
@@ -1516,7 +1527,7 @@ const AutonomicState$json = {
       '3': 9,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.StateConfidence',
+      '6': '.invisible_illness.sensor.v1.StateConfidence',
       '10': 'confidence'
     },
     {
@@ -1524,7 +1535,7 @@ const AutonomicState$json = {
       '3': 10,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.DeviceMetadata',
+      '6': '.invisible_illness.sensor.v1.DeviceMetadata',
       '10': 'metadata'
     },
   ],
@@ -1537,16 +1548,18 @@ const AutonomicState$json = {
 /// Descriptor for `AutonomicState`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List autonomicStateDescriptor = $convert.base64Decode(
     'Cg5BdXRvbm9taWNTdGF0ZRIjCg10aW1lc3RhbXBfc2VjGAEgASgBUgx0aW1lc3RhbXBTZWMSIQ'
-    'oMZHVyYXRpb25fc2VjGAIgASgBUgtkdXJhdGlvblNlYxI2CgdjYXJkaWFjGAMgASgLMhwucm9l'
-    'aC5zZW5zb3IudjEuQ2FyZGlhY1N0YXRlUgdjYXJkaWFjEkgKDWVsZWN0cm9kZXJtYWwYBCABKA'
-    'syIi5yb2VoLnNlbnNvci52MS5FbGVjdHJvZGVybWFsU3RhdGVSDWVsZWN0cm9kZXJtYWwSQgoL'
-    'cmVzcGlyYXRvcnkYBSABKAsyIC5yb2VoLnNlbnNvci52MS5SZXNwaXJhdG9yeVN0YXRlUgtyZX'
-    'NwaXJhdG9yeRI5Cghjb3VwbGluZxgGIAEoCzIdLnJvZWguc2Vuc29yLnYxLkNvdXBsaW5nU3Rh'
-    'dGVSCGNvdXBsaW5nEi4KEGFjdGl2YXRpb25fc2NvcmUYByABKAFIAFIPYWN0aXZhdGlvblNjb3'
-    'JliAEBEi4KEHJlZ3VsYXRpb25fc2NvcmUYCCABKAFIAVIPcmVndWxhdGlvblNjb3JliAEBEj8K'
-    'CmNvbmZpZGVuY2UYCSABKAsyHy5yb2VoLnNlbnNvci52MS5TdGF0ZUNvbmZpZGVuY2VSCmNvbm'
-    'ZpZGVuY2USOgoIbWV0YWRhdGEYCiABKAsyHi5yb2VoLnNlbnNvci52MS5EZXZpY2VNZXRhZGF0'
-    'YVIIbWV0YWRhdGFCEwoRX2FjdGl2YXRpb25fc2NvcmVCEwoRX3JlZ3VsYXRpb25fc2NvcmU=');
+    'oMZHVyYXRpb25fc2VjGAIgASgBUgtkdXJhdGlvblNlYxJDCgdjYXJkaWFjGAMgASgLMikuaW52'
+    'aXNpYmxlX2lsbG5lc3Muc2Vuc29yLnYxLkNhcmRpYWNTdGF0ZVIHY2FyZGlhYxJVCg1lbGVjdH'
+    'JvZGVybWFsGAQgASgLMi8uaW52aXNpYmxlX2lsbG5lc3Muc2Vuc29yLnYxLkVsZWN0cm9kZXJt'
+    'YWxTdGF0ZVINZWxlY3Ryb2Rlcm1hbBJPCgtyZXNwaXJhdG9yeRgFIAEoCzItLmludmlzaWJsZV'
+    '9pbGxuZXNzLnNlbnNvci52MS5SZXNwaXJhdG9yeVN0YXRlUgtyZXNwaXJhdG9yeRJGCghjb3Vw'
+    'bGluZxgGIAEoCzIqLmludmlzaWJsZV9pbGxuZXNzLnNlbnNvci52MS5Db3VwbGluZ1N0YXRlUg'
+    'hjb3VwbGluZxIuChBhY3RpdmF0aW9uX3Njb3JlGAcgASgBSABSD2FjdGl2YXRpb25TY29yZYgB'
+    'ARIuChByZWd1bGF0aW9uX3Njb3JlGAggASgBSAFSD3JlZ3VsYXRpb25TY29yZYgBARJMCgpjb2'
+    '5maWRlbmNlGAkgASgLMiwuaW52aXNpYmxlX2lsbG5lc3Muc2Vuc29yLnYxLlN0YXRlQ29uZmlk'
+    'ZW5jZVIKY29uZmlkZW5jZRJHCghtZXRhZGF0YRgKIAEoCzIrLmludmlzaWJsZV9pbGxuZXNzLn'
+    'NlbnNvci52MS5EZXZpY2VNZXRhZGF0YVIIbWV0YWRhdGFCEwoRX2FjdGl2YXRpb25fc2NvcmVC'
+    'EwoRX3JlZ3VsYXRpb25fc2NvcmU=');
 
 @$core.Deprecated('Use roiDescriptor instead')
 const Roi$json = {
@@ -1623,7 +1636,7 @@ const RppgQualitySummary$json = {
       '3': 3,
       '4': 3,
       '5': 11,
-      '6': '.roeh.sensor.v1.RppgSegmentQuality',
+      '6': '.invisible_illness.sensor.v1.RppgSegmentQuality',
       '10': 'segments'
     },
   ],
@@ -1632,8 +1645,8 @@ const RppgQualitySummary$json = {
 /// Descriptor for `RppgQualitySummary`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List rppgQualitySummaryDescriptor = $convert.base64Decode(
     'ChJScHBnUXVhbGl0eVN1bW1hcnkSGAoHb3ZlcmFsbBgBIAEoAVIHb3ZlcmFsbBIlCg52YWxpZF'
-    '9mcmFjdGlvbhgCIAEoAVINdmFsaWRGcmFjdGlvbhI+CghzZWdtZW50cxgDIAMoCzIiLnJvZWgu'
-    'c2Vuc29yLnYxLlJwcGdTZWdtZW50UXVhbGl0eVIIc2VnbWVudHM=');
+    '9mcmFjdGlvbhgCIAEoAVINdmFsaWRGcmFjdGlvbhJLCghzZWdtZW50cxgDIAMoCzIvLmludmlz'
+    'aWJsZV9pbGxuZXNzLnNlbnNvci52MS5ScHBnU2VnbWVudFF1YWxpdHlSCHNlZ21lbnRz');
 
 @$core.Deprecated('Use rppgSegmentDescriptor instead')
 const RppgSegment$json = {
@@ -1664,7 +1677,7 @@ const RppgSignal$json = {
       '3': 4,
       '4': 3,
       '5': 11,
-      '6': '.roeh.sensor.v1.RppgSegment',
+      '6': '.invisible_illness.sensor.v1.RppgSegment',
       '10': 'validSegments'
     },
     {
@@ -1672,7 +1685,7 @@ const RppgSignal$json = {
       '3': 5,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.RppgQualitySummary',
+      '6': '.invisible_illness.sensor.v1.RppgQualitySummary',
       '10': 'quality'
     },
     {
@@ -1680,7 +1693,7 @@ const RppgSignal$json = {
       '3': 6,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.DeviceMetadata',
+      '6': '.invisible_illness.sensor.v1.DeviceMetadata',
       '10': 'metadata'
     },
   ],
@@ -1690,10 +1703,11 @@ const RppgSignal$json = {
 final $typed_data.Uint8List rppgSignalDescriptor = $convert.base64Decode(
     'CgpScHBnU2lnbmFsEhsKCXN0YXJ0X3NlYxgBIAEoAVIIc3RhcnRTZWMSKAoQc2FtcGxpbmdfcm'
     'F0ZV9oehgCIAEoAVIOc2FtcGxpbmdSYXRlSHoSIwoNcHVsc2Vfc2FtcGxlcxgDIAMoAVIMcHVs'
-    'c2VTYW1wbGVzEkIKDnZhbGlkX3NlZ21lbnRzGAQgAygLMhsucm9laC5zZW5zb3IudjEuUnBwZ1'
-    'NlZ21lbnRSDXZhbGlkU2VnbWVudHMSPAoHcXVhbGl0eRgFIAEoCzIiLnJvZWguc2Vuc29yLnYx'
-    'LlJwcGdRdWFsaXR5U3VtbWFyeVIHcXVhbGl0eRI6CghtZXRhZGF0YRgGIAEoCzIeLnJvZWguc2'
-    'Vuc29yLnYxLkRldmljZU1ldGFkYXRhUghtZXRhZGF0YQ==');
+    'c2VTYW1wbGVzEk8KDnZhbGlkX3NlZ21lbnRzGAQgAygLMiguaW52aXNpYmxlX2lsbG5lc3Muc2'
+    'Vuc29yLnYxLlJwcGdTZWdtZW50Ug12YWxpZFNlZ21lbnRzEkkKB3F1YWxpdHkYBSABKAsyLy5p'
+    'bnZpc2libGVfaWxsbmVzcy5zZW5zb3IudjEuUnBwZ1F1YWxpdHlTdW1tYXJ5UgdxdWFsaXR5Ek'
+    'cKCG1ldGFkYXRhGAYgASgLMisuaW52aXNpYmxlX2lsbG5lc3Muc2Vuc29yLnYxLkRldmljZU1l'
+    'dGFkYXRhUghtZXRhZGF0YQ==');
 
 @$core.Deprecated('Use sensorDataContainerDescriptor instead')
 const SensorDataContainer$json = {
@@ -1704,7 +1718,7 @@ const SensorDataContainer$json = {
       '3': 1,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.DeviceMetadata',
+      '6': '.invisible_illness.sensor.v1.DeviceMetadata',
       '10': 'metadata'
     },
     {
@@ -1720,7 +1734,7 @@ const SensorDataContainer$json = {
       '3': 10,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.ContinuousSignalBatch',
+      '6': '.invisible_illness.sensor.v1.ContinuousSignalBatch',
       '9': 0,
       '10': 'rawSignal'
     },
@@ -1729,7 +1743,7 @@ const SensorDataContainer$json = {
       '3': 11,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.MultiChannelSignalBatch',
+      '6': '.invisible_illness.sensor.v1.MultiChannelSignalBatch',
       '9': 0,
       '10': 'multiChannelSignal'
     },
@@ -1738,7 +1752,7 @@ const SensorDataContainer$json = {
       '3': 12,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.SinglePointMeasurement',
+      '6': '.invisible_illness.sensor.v1.SinglePointMeasurement',
       '9': 0,
       '10': 'singleMeasurement'
     },
@@ -1747,7 +1761,7 @@ const SensorDataContainer$json = {
       '3': 13,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.BloodPressureMeasurement',
+      '6': '.invisible_illness.sensor.v1.BloodPressureMeasurement',
       '9': 0,
       '10': 'bloodPressure'
     },
@@ -1756,7 +1770,7 @@ const SensorDataContainer$json = {
       '3': 14,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.CardiacPeakBatch',
+      '6': '.invisible_illness.sensor.v1.CardiacPeakBatch',
       '9': 0,
       '10': 'cardiacPeaks'
     },
@@ -1765,7 +1779,7 @@ const SensorDataContainer$json = {
       '3': 15,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.ScrEventBatch',
+      '6': '.invisible_illness.sensor.v1.ScrEventBatch',
       '9': 0,
       '10': 'scrEvents'
     },
@@ -1774,7 +1788,7 @@ const SensorDataContainer$json = {
       '3': 16,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.RespirationCycleBatch',
+      '6': '.invisible_illness.sensor.v1.RespirationCycleBatch',
       '9': 0,
       '10': 'respirationCycles'
     },
@@ -1783,7 +1797,7 @@ const SensorDataContainer$json = {
       '3': 17,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.PulseTimingBatch',
+      '6': '.invisible_illness.sensor.v1.PulseTimingBatch',
       '9': 0,
       '10': 'pulseTimings'
     },
@@ -1792,7 +1806,7 @@ const SensorDataContainer$json = {
       '3': 18,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.RsaBatch',
+      '6': '.invisible_illness.sensor.v1.RsaBatch',
       '9': 0,
       '10': 'rsaResults'
     },
@@ -1801,7 +1815,7 @@ const SensorDataContainer$json = {
       '3': 19,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.MultimodalFeatureVector',
+      '6': '.invisible_illness.sensor.v1.MultimodalFeatureVector',
       '9': 0,
       '10': 'featureVector'
     },
@@ -1810,7 +1824,7 @@ const SensorDataContainer$json = {
       '3': 20,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.AutonomicState',
+      '6': '.invisible_illness.sensor.v1.AutonomicState',
       '9': 0,
       '10': 'autonomicState'
     },
@@ -1819,7 +1833,7 @@ const SensorDataContainer$json = {
       '3': 21,
       '4': 1,
       '5': 11,
-      '6': '.roeh.sensor.v1.RppgSignal',
+      '6': '.invisible_illness.sensor.v1.RppgSignal',
       '9': 0,
       '10': 'rppgSignal'
     },
@@ -1831,23 +1845,26 @@ const SensorDataContainer$json = {
 
 /// Descriptor for `SensorDataContainer`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List sensorDataContainerDescriptor = $convert.base64Decode(
-    'ChNTZW5zb3JEYXRhQ29udGFpbmVyEjoKCG1ldGFkYXRhGAEgASgLMh4ucm9laC5zZW5zb3Iudj'
-    'EuRGV2aWNlTWV0YWRhdGFSCG1ldGFkYXRhEkUKEHBhY2tldF90aW1lc3RhbXAYAiABKAsyGi5n'
-    'b29nbGUucHJvdG9idWYuVGltZXN0YW1wUg9wYWNrZXRUaW1lc3RhbXASRgoKcmF3X3NpZ25hbB'
-    'gKIAEoCzIlLnJvZWguc2Vuc29yLnYxLkNvbnRpbnVvdXNTaWduYWxCYXRjaEgAUglyYXdTaWdu'
-    'YWwSWwoUbXVsdGlfY2hhbm5lbF9zaWduYWwYCyABKAsyJy5yb2VoLnNlbnNvci52MS5NdWx0aU'
-    'NoYW5uZWxTaWduYWxCYXRjaEgAUhJtdWx0aUNoYW5uZWxTaWduYWwSVwoSc2luZ2xlX21lYXN1'
-    'cmVtZW50GAwgASgLMiYucm9laC5zZW5zb3IudjEuU2luZ2xlUG9pbnRNZWFzdXJlbWVudEgAUh'
-    'FzaW5nbGVNZWFzdXJlbWVudBJRCg5ibG9vZF9wcmVzc3VyZRgNIAEoCzIoLnJvZWguc2Vuc29y'
-    'LnYxLkJsb29kUHJlc3N1cmVNZWFzdXJlbWVudEgAUg1ibG9vZFByZXNzdXJlEkcKDWNhcmRpYW'
-    'NfcGVha3MYDiABKAsyIC5yb2VoLnNlbnNvci52MS5DYXJkaWFjUGVha0JhdGNoSABSDGNhcmRp'
-    'YWNQZWFrcxI+CgpzY3JfZXZlbnRzGA8gASgLMh0ucm9laC5zZW5zb3IudjEuU2NyRXZlbnRCYX'
-    'RjaEgAUglzY3JFdmVudHMSVgoScmVzcGlyYXRpb25fY3ljbGVzGBAgASgLMiUucm9laC5zZW5z'
-    'b3IudjEuUmVzcGlyYXRpb25DeWNsZUJhdGNoSABSEXJlc3BpcmF0aW9uQ3ljbGVzEkcKDXB1bH'
-    'NlX3RpbWluZ3MYESABKAsyIC5yb2VoLnNlbnNvci52MS5QdWxzZVRpbWluZ0JhdGNoSABSDHB1'
-    'bHNlVGltaW5ncxI7Cgtyc2FfcmVzdWx0cxgSIAEoCzIYLnJvZWguc2Vuc29yLnYxLlJzYUJhdG'
-    'NoSABSCnJzYVJlc3VsdHMSUAoOZmVhdHVyZV92ZWN0b3IYEyABKAsyJy5yb2VoLnNlbnNvci52'
-    'MS5NdWx0aW1vZGFsRmVhdHVyZVZlY3RvckgAUg1mZWF0dXJlVmVjdG9yEkkKD2F1dG9ub21pY1'
-    '9zdGF0ZRgUIAEoCzIeLnJvZWguc2Vuc29yLnYxLkF1dG9ub21pY1N0YXRlSABSDmF1dG9ub21p'
-    'Y1N0YXRlEj0KC3JwcGdfc2lnbmFsGBUgASgLMhoucm9laC5zZW5zb3IudjEuUnBwZ1NpZ25hbE'
-    'gAUgpycHBnU2lnbmFsQgkKB3BheWxvYWQ=');
+    'ChNTZW5zb3JEYXRhQ29udGFpbmVyEkcKCG1ldGFkYXRhGAEgASgLMisuaW52aXNpYmxlX2lsbG'
+    '5lc3Muc2Vuc29yLnYxLkRldmljZU1ldGFkYXRhUghtZXRhZGF0YRJFChBwYWNrZXRfdGltZXN0'
+    'YW1wGAIgASgLMhouZ29vZ2xlLnByb3RvYnVmLlRpbWVzdGFtcFIPcGFja2V0VGltZXN0YW1wEl'
+    'MKCnJhd19zaWduYWwYCiABKAsyMi5pbnZpc2libGVfaWxsbmVzcy5zZW5zb3IudjEuQ29udGlu'
+    'dW91c1NpZ25hbEJhdGNoSABSCXJhd1NpZ25hbBJoChRtdWx0aV9jaGFubmVsX3NpZ25hbBgLIA'
+    'EoCzI0LmludmlzaWJsZV9pbGxuZXNzLnNlbnNvci52MS5NdWx0aUNoYW5uZWxTaWduYWxCYXRj'
+    'aEgAUhJtdWx0aUNoYW5uZWxTaWduYWwSZAoSc2luZ2xlX21lYXN1cmVtZW50GAwgASgLMjMuaW'
+    '52aXNpYmxlX2lsbG5lc3Muc2Vuc29yLnYxLlNpbmdsZVBvaW50TWVhc3VyZW1lbnRIAFIRc2lu'
+    'Z2xlTWVhc3VyZW1lbnQSXgoOYmxvb2RfcHJlc3N1cmUYDSABKAsyNS5pbnZpc2libGVfaWxsbm'
+    'Vzcy5zZW5zb3IudjEuQmxvb2RQcmVzc3VyZU1lYXN1cmVtZW50SABSDWJsb29kUHJlc3N1cmUS'
+    'VAoNY2FyZGlhY19wZWFrcxgOIAEoCzItLmludmlzaWJsZV9pbGxuZXNzLnNlbnNvci52MS5DYX'
+    'JkaWFjUGVha0JhdGNoSABSDGNhcmRpYWNQZWFrcxJLCgpzY3JfZXZlbnRzGA8gASgLMiouaW52'
+    'aXNpYmxlX2lsbG5lc3Muc2Vuc29yLnYxLlNjckV2ZW50QmF0Y2hIAFIJc2NyRXZlbnRzEmMKEn'
+    'Jlc3BpcmF0aW9uX2N5Y2xlcxgQIAEoCzIyLmludmlzaWJsZV9pbGxuZXNzLnNlbnNvci52MS5S'
+    'ZXNwaXJhdGlvbkN5Y2xlQmF0Y2hIAFIRcmVzcGlyYXRpb25DeWNsZXMSVAoNcHVsc2VfdGltaW'
+    '5ncxgRIAEoCzItLmludmlzaWJsZV9pbGxuZXNzLnNlbnNvci52MS5QdWxzZVRpbWluZ0JhdGNo'
+    'SABSDHB1bHNlVGltaW5ncxJICgtyc2FfcmVzdWx0cxgSIAEoCzIlLmludmlzaWJsZV9pbGxuZX'
+    'NzLnNlbnNvci52MS5Sc2FCYXRjaEgAUgpyc2FSZXN1bHRzEl0KDmZlYXR1cmVfdmVjdG9yGBMg'
+    'ASgLMjQuaW52aXNpYmxlX2lsbG5lc3Muc2Vuc29yLnYxLk11bHRpbW9kYWxGZWF0dXJlVmVjdG'
+    '9ySABSDWZlYXR1cmVWZWN0b3ISVgoPYXV0b25vbWljX3N0YXRlGBQgASgLMisuaW52aXNpYmxl'
+    'X2lsbG5lc3Muc2Vuc29yLnYxLkF1dG9ub21pY1N0YXRlSABSDmF1dG9ub21pY1N0YXRlEkoKC3'
+    'JwcGdfc2lnbmFsGBUgASgLMicuaW52aXNpYmxlX2lsbG5lc3Muc2Vuc29yLnYxLlJwcGdTaWdu'
+    'YWxIAFIKcnBwZ1NpZ25hbEIJCgdwYXlsb2Fk');

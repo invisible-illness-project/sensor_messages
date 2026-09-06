@@ -1,6 +1,6 @@
-# Roeh Health Sensor Messages (`roeh.sensor.v1`) 📡
+# Invisible Illness Project Sensor Messages (`invisible_illness.sensor.v1`) 📡
 
-`sensor_messages` defines the canonical, language-neutral Protocol Buffer transport contract for the Roeh Health biomedical sensor-processing stack.
+`sensor_messages` defines the canonical, language-neutral Protocol Buffer transport contract for the Invisible Illness Project biomedical sensor-processing stack.
 
 **Lamina** (`lamina`) is the computational source of truth for signal processing, feature extraction, cardiorespiratory coupling, and autonomic state estimation. `sensor_messages` provides the cross-language transport contract for serializing and exchanging these data structures across:
 
@@ -153,7 +153,7 @@ void main() {
 
 ## 📊 Package Architecture & Message Summary
 
-The schema (`roeh.sensor.v1`) is structured into seven logical sections:
+The schema (`invisible_illness.sensor.v1`) is structured into seven logical sections:
 
 1. **Metadata & Enumerations**: `DeviceMetadata`, `SensorModality`, `PhysicalUnit`, `FilterSpec`.
 2. **Continuous Signals & Raw Streams**: `ContinuousSignalBatch`, `MultiChannelSignalBatch`, `SinglePointMeasurement`, `BloodPressureMeasurement`.

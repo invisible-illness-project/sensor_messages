@@ -2,7 +2,7 @@
 name = "sensor_messages"
 version = "0.1.0"
 edition = "2021"
-description = "Protobuf message definitions for Roeh Health sensor data transport & Lamina compatibility"
+description = "Protobuf message definitions for Invisible Illness Project sensor data transport & Lamina compatibility"
 
 [dependencies]
 prost = "0.13"

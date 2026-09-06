@@ -1,18 +1,18 @@
 syntax = "proto3";
 
-package roeh.sensor.v1;
+package invisible_illness.sensor.v1;
 
 import "google/protobuf/timestamp.proto";
 
-option go_package = "github.com/roeh-health/sensor_messages/v1;sensorv1";
-option java_package = "com.roehhealth.sensor.v1";
+option go_package = "github.com/invisible-illness-project/sensor_messages/v1;sensorv1";
+option java_package = "org.invisibleillness.sensor.v1";
 option java_multiple_files = true;
 
 // ============================================================================
 // 1. Common Metadata & Enumerations
 // ============================================================================
 
-/// Primary sensor modalities across Roeh Health hardware & processing stack.
+/// Primary sensor modalities across Invisible Illness Project hardware & processing stack.
 enum SensorModality {
   SENSOR_MODALITY_UNSPECIFIED = 0;
   SENSOR_MODALITY_ECG = 1;          // Electrocardiography
