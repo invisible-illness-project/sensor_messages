@@ -91,6 +91,20 @@ enum CorrectionPolicyKind {
   CORRECTION_POLICY_PERCENT_THRESHOLD = 5;
 }
 
+/// Structured interval correction policy specification matching lamina::hrv::CorrectionPolicy.
+message CorrectionPolicy {
+  CorrectionPolicyKind kind = 1;
+  double percent_threshold = 2;
+}
+
+/// Remote photoplethysmography (rPPG) extraction algorithm identifier matching lamina::rppg::RppgAlgorithmId.
+enum RppgAlgorithmId {
+  RPPG_ALGORITHM_ID_UNSPECIFIED = 0;
+  RPPG_ALGORITHM_ID_POS = 1;
+  RPPG_ALGORITHM_ID_CHROM = 2;
+  RPPG_ALGORITHM_ID_GREEN = 3;
+}
+
 /// Digital filter specification and provenance metadata.
 message FilterSpec {
   FilterKind kind = 1;
@@ -449,6 +463,9 @@ message RppgSignal {
   RppgQualitySummary quality = 5;
   DeviceMetadata metadata = 6;
   SignalPolarity polarity = 7;
+  RppgAlgorithmId algorithm = 8;
+  repeated double timestamps_sec = 9;
+  repeated RppgSegmentQuality segment_qualities = 10;
 }
 
 /// Normalized optical blood volume pulse (BVP) surrogate waveform matching lamina::rppg::BvpWaveform.

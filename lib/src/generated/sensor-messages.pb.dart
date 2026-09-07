@@ -152,6 +152,75 @@ class DeviceMetadata extends $pb.GeneratedMessage {
   void clearSensorLocation() => $_clearField(7);
 }
 
+/// / Structured interval correction policy specification matching lamina::hrv::CorrectionPolicy.
+class CorrectionPolicy extends $pb.GeneratedMessage {
+  factory CorrectionPolicy({
+    CorrectionPolicyKind? kind,
+    $core.double? percentThreshold,
+  }) {
+    final result = create();
+    if (kind != null) result.kind = kind;
+    if (percentThreshold != null) result.percentThreshold = percentThreshold;
+    return result;
+  }
+
+  CorrectionPolicy._();
+
+  factory CorrectionPolicy.fromBuffer($core.List<$core.int> data,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromBuffer(data, registry);
+  factory CorrectionPolicy.fromJson($core.String json,
+          [$pb.ExtensionRegistry registry = $pb.ExtensionRegistry.EMPTY]) =>
+      create()..mergeFromJson(json, registry);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(
+      _omitMessageNames ? '' : 'CorrectionPolicy',
+      package: const $pb.PackageName(
+          _omitMessageNames ? '' : 'invisible_illness.sensor.v1'),
+      createEmptyInstance: create)
+    ..aE<CorrectionPolicyKind>(1, _omitFieldNames ? '' : 'kind',
+        enumValues: CorrectionPolicyKind.values)
+    ..aD(2, _omitFieldNames ? '' : 'percentThreshold')
+    ..hasRequiredFields = false;
+
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  CorrectionPolicy clone() => deepCopy();
+  @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
+  CorrectionPolicy copyWith(void Function(CorrectionPolicy) updates) =>
+      super.copyWith((message) => updates(message as CorrectionPolicy))
+          as CorrectionPolicy;
+
+  @$core.override
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static CorrectionPolicy create() => CorrectionPolicy._();
+  @$core.override
+  CorrectionPolicy createEmptyInstance() => create();
+  @$core.pragma('dart2js:noInline')
+  static CorrectionPolicy getDefault() => _defaultInstance ??=
+      $pb.GeneratedMessage.$_defaultFor<CorrectionPolicy>(create);
+  static CorrectionPolicy? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  CorrectionPolicyKind get kind => $_getN(0);
+  @$pb.TagNumber(1)
+  set kind(CorrectionPolicyKind value) => $_setField(1, value);
+  @$pb.TagNumber(1)
+  $core.bool hasKind() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearKind() => $_clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.double get percentThreshold => $_getN(1);
+  @$pb.TagNumber(2)
+  set percentThreshold($core.double value) => $_setDouble(1, value);
+  @$pb.TagNumber(2)
+  $core.bool hasPercentThreshold() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearPercentThreshold() => $_clearField(2);
+}
+
 /// / Digital filter specification and provenance metadata.
 class FilterSpec extends $pb.GeneratedMessage {
   factory FilterSpec({
@@ -3958,6 +4027,9 @@ class RppgSignal extends $pb.GeneratedMessage {
     RppgQualitySummary? quality,
     DeviceMetadata? metadata,
     SignalPolarity? polarity,
+    RppgAlgorithmId? algorithm,
+    $core.Iterable<$core.double>? timestampsSec,
+    $core.Iterable<RppgSegmentQuality>? segmentQualities,
   }) {
     final result = create();
     if (startSec != null) result.startSec = startSec;
@@ -3967,6 +4039,10 @@ class RppgSignal extends $pb.GeneratedMessage {
     if (quality != null) result.quality = quality;
     if (metadata != null) result.metadata = metadata;
     if (polarity != null) result.polarity = polarity;
+    if (algorithm != null) result.algorithm = algorithm;
+    if (timestampsSec != null) result.timestampsSec.addAll(timestampsSec);
+    if (segmentQualities != null)
+      result.segmentQualities.addAll(segmentQualities);
     return result;
   }
 
@@ -3996,6 +4072,12 @@ class RppgSignal extends $pb.GeneratedMessage {
         subBuilder: DeviceMetadata.create)
     ..aE<SignalPolarity>(7, _omitFieldNames ? '' : 'polarity',
         enumValues: SignalPolarity.values)
+    ..aE<RppgAlgorithmId>(8, _omitFieldNames ? '' : 'algorithm',
+        enumValues: RppgAlgorithmId.values)
+    ..p<$core.double>(
+        9, _omitFieldNames ? '' : 'timestampsSec', $pb.PbFieldType.KD)
+    ..pPM<RppgSegmentQuality>(10, _omitFieldNames ? '' : 'segmentQualities',
+        subBuilder: RppgSegmentQuality.create)
     ..hasRequiredFields = false;
 
   @$core.Deprecated('See https://github.com/google/protobuf.dart/issues/998.')
@@ -4070,6 +4152,21 @@ class RppgSignal extends $pb.GeneratedMessage {
   $core.bool hasPolarity() => $_has(6);
   @$pb.TagNumber(7)
   void clearPolarity() => $_clearField(7);
+
+  @$pb.TagNumber(8)
+  RppgAlgorithmId get algorithm => $_getN(7);
+  @$pb.TagNumber(8)
+  set algorithm(RppgAlgorithmId value) => $_setField(8, value);
+  @$pb.TagNumber(8)
+  $core.bool hasAlgorithm() => $_has(7);
+  @$pb.TagNumber(8)
+  void clearAlgorithm() => $_clearField(8);
+
+  @$pb.TagNumber(9)
+  $pb.PbList<$core.double> get timestampsSec => $_getList(8);
+
+  @$pb.TagNumber(10)
+  $pb.PbList<RppgSegmentQuality> get segmentQualities => $_getList(9);
 }
 
 /// / Normalized optical blood volume pulse (BVP) surrogate waveform matching lamina::rppg::BvpWaveform.

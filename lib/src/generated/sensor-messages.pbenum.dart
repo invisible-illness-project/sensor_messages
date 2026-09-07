@@ -240,6 +240,33 @@ class CorrectionPolicyKind extends $pb.ProtobufEnum {
   const CorrectionPolicyKind._(super.value, super.name);
 }
 
+/// / Remote photoplethysmography (rPPG) extraction algorithm identifier matching lamina::rppg::RppgAlgorithmId.
+class RppgAlgorithmId extends $pb.ProtobufEnum {
+  static const RppgAlgorithmId RPPG_ALGORITHM_ID_UNSPECIFIED =
+      RppgAlgorithmId._(
+          0, _omitEnumNames ? '' : 'RPPG_ALGORITHM_ID_UNSPECIFIED');
+  static const RppgAlgorithmId RPPG_ALGORITHM_ID_POS =
+      RppgAlgorithmId._(1, _omitEnumNames ? '' : 'RPPG_ALGORITHM_ID_POS');
+  static const RppgAlgorithmId RPPG_ALGORITHM_ID_CHROM =
+      RppgAlgorithmId._(2, _omitEnumNames ? '' : 'RPPG_ALGORITHM_ID_CHROM');
+  static const RppgAlgorithmId RPPG_ALGORITHM_ID_GREEN =
+      RppgAlgorithmId._(3, _omitEnumNames ? '' : 'RPPG_ALGORITHM_ID_GREEN');
+
+  static const $core.List<RppgAlgorithmId> values = <RppgAlgorithmId>[
+    RPPG_ALGORITHM_ID_UNSPECIFIED,
+    RPPG_ALGORITHM_ID_POS,
+    RPPG_ALGORITHM_ID_CHROM,
+    RPPG_ALGORITHM_ID_GREEN,
+  ];
+
+  static final $core.List<RppgAlgorithmId?> _byValue =
+      $pb.ProtobufEnum.$_initByValueList(values, 3);
+  static RppgAlgorithmId? valueOf($core.int value) =>
+      value < 0 || value >= _byValue.length ? null : _byValue[value];
+
+  const RppgAlgorithmId._(super.value, super.name);
+}
+
 /// / Feature quality issue enumeration matching lamina::features::quality::FeatureQualityIssue.
 class FeatureQualityIssue extends $pb.ProtobufEnum {
   static const FeatureQualityIssue FEATURE_QUALITY_ISSUE_UNSPECIFIED =

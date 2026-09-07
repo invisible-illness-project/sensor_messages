@@ -148,6 +148,23 @@ final $typed_data.Uint8List correctionPolicyKindDescriptor = $convert.base64Deco
     'cKI0NPUlJFQ1RJT05fUE9MSUNZX0lOVEVSUE9MQVRFX0NVQklDEAQSJwojQ09SUkVDVElPTl9Q'
     'T0xJQ1lfUEVSQ0VOVF9USFJFU0hPTEQQBQ==');
 
+@$core.Deprecated('Use rppgAlgorithmIdDescriptor instead')
+const RppgAlgorithmId$json = {
+  '1': 'RppgAlgorithmId',
+  '2': [
+    {'1': 'RPPG_ALGORITHM_ID_UNSPECIFIED', '2': 0},
+    {'1': 'RPPG_ALGORITHM_ID_POS', '2': 1},
+    {'1': 'RPPG_ALGORITHM_ID_CHROM', '2': 2},
+    {'1': 'RPPG_ALGORITHM_ID_GREEN', '2': 3},
+  ],
+};
+
+/// Descriptor for `RppgAlgorithmId`. Decode as a `google.protobuf.EnumDescriptorProto`.
+final $typed_data.Uint8List rppgAlgorithmIdDescriptor = $convert.base64Decode(
+    'Cg9ScHBnQWxnb3JpdGhtSWQSIQodUlBQR19BTEdPUklUSE1fSURfVU5TUEVDSUZJRUQQABIZCh'
+    'VSUFBHX0FMR09SSVRITV9JRF9QT1MQARIbChdSUFBHX0FMR09SSVRITV9JRF9DSFJPTRACEhsK'
+    'F1JQUEdfQUxHT1JJVEhNX0lEX0dSRUVOEAM=');
+
 @$core.Deprecated('Use featureQualityIssueDescriptor instead')
 const FeatureQualityIssue$json = {
   '1': 'FeatureQualityIssue',
@@ -193,6 +210,34 @@ final $typed_data.Uint8List deviceMetadataDescriptor = $convert.base64Decode(
     'aGFyZHdhcmVfbW9kZWwYBCABKAlSDWhhcmR3YXJlTW9kZWwSKQoQZmlybXdhcmVfdmVyc2lvbh'
     'gFIAEoCVIPZmlybXdhcmVWZXJzaW9uEicKD2JhdHRlcnlfcGVyY2VudBgGIAEoDVIOYmF0dGVy'
     'eVBlcmNlbnQSJwoPc2Vuc29yX2xvY2F0aW9uGAcgASgJUg5zZW5zb3JMb2NhdGlvbg==');
+
+@$core.Deprecated('Use correctionPolicyDescriptor instead')
+const CorrectionPolicy$json = {
+  '1': 'CorrectionPolicy',
+  '2': [
+    {
+      '1': 'kind',
+      '3': 1,
+      '4': 1,
+      '5': 14,
+      '6': '.invisible_illness.sensor.v1.CorrectionPolicyKind',
+      '10': 'kind'
+    },
+    {
+      '1': 'percent_threshold',
+      '3': 2,
+      '4': 1,
+      '5': 1,
+      '10': 'percentThreshold'
+    },
+  ],
+};
+
+/// Descriptor for `CorrectionPolicy`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List correctionPolicyDescriptor = $convert.base64Decode(
+    'ChBDb3JyZWN0aW9uUG9saWN5EkUKBGtpbmQYASABKA4yMS5pbnZpc2libGVfaWxsbmVzcy5zZW'
+    '5zb3IudjEuQ29ycmVjdGlvblBvbGljeUtpbmRSBGtpbmQSKwoRcGVyY2VudF90aHJlc2hvbGQY'
+    'AiABKAFSEHBlcmNlbnRUaHJlc2hvbGQ=');
 
 @$core.Deprecated('Use filterSpecDescriptor instead')
 const FilterSpec$json = {
@@ -1761,6 +1806,23 @@ const RppgSignal$json = {
       '6': '.invisible_illness.sensor.v1.SignalPolarity',
       '10': 'polarity'
     },
+    {
+      '1': 'algorithm',
+      '3': 8,
+      '4': 1,
+      '5': 14,
+      '6': '.invisible_illness.sensor.v1.RppgAlgorithmId',
+      '10': 'algorithm'
+    },
+    {'1': 'timestamps_sec', '3': 9, '4': 3, '5': 1, '10': 'timestampsSec'},
+    {
+      '1': 'segment_qualities',
+      '3': 10,
+      '4': 3,
+      '5': 11,
+      '6': '.invisible_illness.sensor.v1.RppgSegmentQuality',
+      '10': 'segmentQualities'
+    },
   ],
 };
 
@@ -1773,7 +1835,11 @@ final $typed_data.Uint8List rppgSignalDescriptor = $convert.base64Decode(
     'bnZpc2libGVfaWxsbmVzcy5zZW5zb3IudjEuUnBwZ1F1YWxpdHlTdW1tYXJ5UgdxdWFsaXR5Ek'
     'cKCG1ldGFkYXRhGAYgASgLMisuaW52aXNpYmxlX2lsbG5lc3Muc2Vuc29yLnYxLkRldmljZU1l'
     'dGFkYXRhUghtZXRhZGF0YRJHCghwb2xhcml0eRgHIAEoDjIrLmludmlzaWJsZV9pbGxuZXNzLn'
-    'NlbnNvci52MS5TaWduYWxQb2xhcml0eVIIcG9sYXJpdHk=');
+    'NlbnNvci52MS5TaWduYWxQb2xhcml0eVIIcG9sYXJpdHkSSgoJYWxnb3JpdGhtGAggASgOMiwu'
+    'aW52aXNpYmxlX2lsbG5lc3Muc2Vuc29yLnYxLlJwcGdBbGdvcml0aG1JZFIJYWxnb3JpdGhtEi'
+    'UKDnRpbWVzdGFtcHNfc2VjGAkgAygBUg10aW1lc3RhbXBzU2VjElwKEXNlZ21lbnRfcXVhbGl0'
+    'aWVzGAogAygLMi8uaW52aXNpYmxlX2lsbG5lc3Muc2Vuc29yLnYxLlJwcGdTZWdtZW50UXVhbG'
+    'l0eVIQc2VnbWVudFF1YWxpdGllcw==');
 
 @$core.Deprecated('Use bvpWaveformDescriptor instead')
 const BvpWaveform$json = {
